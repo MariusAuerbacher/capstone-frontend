@@ -23,7 +23,7 @@ It is a sort of LinkedIn/Tinder/Facebook of Charity.
 
  Frontend technologies most likely to be used:   HTML, CSS, Bootstrap, JavaScript(redux), React
 
- Backend technologies most likely to be used:    Express, MongoDB, JWT and some other security features for the users.
+ Backend technologies most likely to be used:    Node, Express, MongoDB, Mongoose, OAuth, JWT and some other security features for the users.
 
  ## Features
 
@@ -42,4 +42,6 @@ It is a sort of LinkedIn/Tinder/Facebook of Charity.
  Page of how donations have already helped and impacted the lifes of those who've received them.
 
 Main page will explain the features of the website and emphasize the 100% donation policy.
+
+A donor can save profiles to his favourites and profiles that he donated to automatically get saved to Donated.
 

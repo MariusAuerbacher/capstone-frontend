@@ -11,7 +11,7 @@ but they would still like to help people in need.
 
 This is where my project comes in.
 
-It is a sort of LinkedIn/Tinder/Facebook of Charity.
+It is a sort of LinkedIn/Tinder/Facebook of Charity.    It let's you find, connect and DIRECTLY donate to needy people.
 
  Selected trusted organisations and individuals, mosques, churches etc. will be able to register people in their communities on my website ( and app in the future) who they know are the most in need of help.
 

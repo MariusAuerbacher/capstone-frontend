@@ -5,16 +5,29 @@ import { Col, Container, Form, Row } from "react-bootstrap";
 
 
 const Register = () => {
-  //const [name, setName] = useState()
-  //const [email, setEmail] = useState()
-  //const [password, setPassword] = useState()
+  const [name, setName] = useState({
+   name: ""
+  })
+  const [email, setEmail] = useState({
+    email: ""
+  })
+  const [password, setPassword] = useState({
+    password: ""
+  })
 
-  const registrationHandler = async() => {
-    //const res = await axios.post("/users/register", {
-      //name, email, password
-    //})
-    //console.log(res.data)
+
+
+  const registrationHandler = async(e) => {
+    e.preventDefault()
+    const res = await axios.post("/users/register", {
+   name, email, password
+    })
+    .then(res => console.log(res.data))
+    console.log("++++++++++++++", res.data)
   }
+
+
+
 
   return (
     <>
@@ -26,24 +39,36 @@ const Register = () => {
 
 
       <Form  onSubmit={registrationHandler}>
-        <Form.Group controlId="exampleForm.ControlInput1">
+        <Form.Group>
           <Form.Label>Name</Form.Label>
-          <Form.Control type="text" placeholder="Your name" value="" /* onChange={(e) => {
-                  setSearchWord(e.target.value.toLowerCase());
-                }}*/ />
+          <Form.Control type="text" placeholder="Your name" name="name" value={name.name} onChange={(e)=> {
+            setName({
+              ...name,
+              name: e.target.value
+            })
+          }} />
         </Form.Group>
 
 
-        <Form.Group controlId="exampleForm.ControlInput3">
+        <Form.Group>
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="example@gmail.com" />
+          <Form.Control type="email" placeholder="example@gmail.com" value={email.email} onChange={(e)=> {
+            setEmail({
+              ...email,
+              email: e.target.value
+            })
+          }}/>
         </Form.Group>
 
-        <Form.Group controlId="exampleForm.ControlInput3">
+        <Form.Group>
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Your password" />
+          <Form.Control type="password" placeholder="Your password" value={password.password} onChange={(e)=> {
+            setPassword({
+              ...password,
+              password: e.target.value
+            })
+          }} />
         </Form.Group>
-
         {/*<Form.Group controlId="exampleForm.ControlInput4">
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Confirm your password" />
@@ -53,22 +78,22 @@ const Register = () => {
           type="checkbox"
           value="1"
           id="terms"
-          class="tml-checkbox"
+          className="tml-checkbox"
         ></input>
         <button
           name="submit"
           type="submit"
-          class="btn btn-primary btn-block btn-xl"
+          className="btn btn-primary btn-block btn-xl"
         >
           Register
         </button>
       </Form>
 
-      <ul class="tml-links">
-        <li class="tml-login-link">
+      <ul className="tml-links">
+        <li className="tml-login-link">
           <a href="/login">Log in</a>
         </li>
-        <li class="tml-lostpassword-link">
+        <li className="tml-lostpassword-link">
           <a href="/login">Lost your password?</a>
         </li>
       </ul>

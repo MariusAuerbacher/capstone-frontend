@@ -9,3 +9,8 @@
 .whole-brand{
  justify-content: space-between;
 }
+
+.top-outline{
+  border: solid 1px rgb(92, 91, 91);
+}
+

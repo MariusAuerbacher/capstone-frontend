@@ -11,7 +11,7 @@ const MainSlides = () => {
   <Carousel.Item>
     <img
       className="d-block w-100 carousel-images"
-      src="http://placekitten.com/500/500"
+      src="https://picsum.photos/200/300"
       alt="First slide"
     />
     <Carousel.Caption>
@@ -22,7 +22,7 @@ const MainSlides = () => {
   <Carousel.Item>
     <img
       className="d-block w-100 carousel-images"
-      src="http://placekitten.com/500/500"
+      src="https://picsum.photos/200/300"
       alt="Second slide"
     />
 
@@ -34,7 +34,7 @@ const MainSlides = () => {
   <Carousel.Item>
     <img
       className="d-block w-100 carousel-images"
-      src="http://placekitten.com/500/500"
+      src="https://picsum.photos/200/300"
       alt="Third slide"
     />
 

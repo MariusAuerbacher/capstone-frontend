@@ -11,7 +11,7 @@ const MainSlides = () => {
   <Carousel.Item>
     <img
       className="d-block w-100 carousel-images"
-      src="https://picsum.photos/200/300"
+      src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
       alt="First slide"
     />
     <Carousel.Caption>
@@ -22,7 +22,7 @@ const MainSlides = () => {
   <Carousel.Item>
     <img
       className="d-block w-100 carousel-images"
-      src="https://picsum.photos/200/300"
+      src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y2hhcml0eXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
       alt="Second slide"
     />
 
@@ -34,7 +34,7 @@ const MainSlides = () => {
   <Carousel.Item>
     <img
       className="d-block w-100 carousel-images"
-      src="https://picsum.photos/200/300"
+      src="https://images.unsplash.com/photo-1575356891535-a79c0bc6bffc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
       alt="Third slide"
     />
 

@@ -3,6 +3,7 @@ import {  Form, Modal, OverlayTrigger, Popover } from 'react-bootstrap';
 import { BiDotsHorizontalRounded} from 'react-icons/bi';
 import { BsChevronUp } from 'react-icons/bs';
 import { HiOutlinePencil } from 'react-icons/hi';
+import "../css/Messaging.css"
 
 
 function Messaging() {
@@ -19,7 +20,7 @@ function Messaging() {
         <Popover id={`popover-positioned-${placement}`} className="popover-height">
           <Popover.Title as="h3"></Popover.Title>
           <Popover.Content className="messaging-content">
-            <strong className="ml-1">Keep in touch with your network</strong>
+            <strong className="ml-1">Messages</strong>
             <Form>
       <Form.Group className="mb-3 mt-2">
         

@@ -1,7 +1,8 @@
-import { SET_USER } from "../actions";
+import { SET_ROLE, SET_USER } from "../actions";
 
 const initialState = {
   user: null,
+  role: null
 };
 
 const userReducer = (state = initialState, action) => {
@@ -12,7 +13,12 @@ const userReducer = (state = initialState, action) => {
       user: action.payload
     }
   }
-
+  if(action.type === SET_ROLE){
+    return {
+      ...state,
+      role: action.payload
+    }
+  }
   return state;
 };
 

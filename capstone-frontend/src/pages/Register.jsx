@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { SET_ROLE, SET_USER } from "../redux/actions";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const userRegistrationHandler = async (e) => {
     e.preventDefault();
@@ -28,6 +28,7 @@ const Register = () => {
         type: SET_ROLE,
         payload: res.data.role
       })
+      navigate("/login")
     } catch (error) {
       console.log(error.response.data.message);
     }

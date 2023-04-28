@@ -1,8 +1,14 @@
 import React from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 
 const Country = () => {
+  const navigate = useNavigate()
+  const onPersonHandler = () => {
+   
+    navigate("/beneficiaries")
+  }
   return (
     <>
       <Container id="country">
@@ -26,7 +32,7 @@ const Country = () => {
   </Card.Body>
 
 </Card>
-<Button variant="primary" className="mt-3 mb-3" style={{ width: '18rem' }} >Go somewhere</Button>
+<Button variant="primary" className="mt-3 mb-3" style={{ width: '18rem' }} onClick={onPersonHandler} >Go somewhere</Button>
 </Col>
 
      
@@ -42,7 +48,7 @@ const Country = () => {
   </Card.Body>
 
 </Card>
-<Button variant="primary" className="mt-3 mb-3" style={{ width: '18rem' }} >Go somewhere</Button>
+<Button variant="primary" className="mt-3 mb-3" style={{ width: '18rem' }}  onClick={onPersonHandler} >Go somewhere</Button>
 </Col>
 
 
@@ -59,7 +65,7 @@ const Country = () => {
   </Card.Body>
 
 </Card>
-<Button variant="primary" className="mt-3 mb-3" style={{ width: '18rem' }} >Go somewhere</Button>
+<Button variant="primary" className="mt-3 mb-3" style={{ width: '18rem' }}  onClick={onPersonHandler} >Go somewhere</Button>
 </Col>
 
         </Row>

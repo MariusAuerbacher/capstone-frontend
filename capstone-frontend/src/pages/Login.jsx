@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import {useDispatch} from "react-redux"
 import { SET_ROLE, SET_USER } from "../redux/actions";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const loginHandler = async (e) => {
@@ -30,6 +30,7 @@ const Login = () => {
         type: SET_ROLE,
         payload: res.data.role
       })
+      navigate("/cards")
     } catch (error) {
       console.log(error.response.data.message);
     }

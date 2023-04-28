@@ -1,14 +1,10 @@
 import React from "react";
-import { Button, Card, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import {useNavigate } from "react-router-dom";
 import "../css/Cards.css"
 
 
-
-const Cards = () => {
-
-
-
+const Beneficiaries = () => {
   const navigate = useNavigate()
   const onRohingyaHandler = () => {
    
@@ -21,7 +17,6 @@ const Cards = () => {
   <input type="submit" value="Search"/>
 </form>
 
-
 <div className="d-flex justify-content-end button-urgent-appeals mt-2">
 <Button variant="danger" style={{ width: '16rem' }}>Urgent Appeals</Button>
 
@@ -33,7 +28,7 @@ const Cards = () => {
 <Card style={{ width: '18rem' }}>
   <Card.Img variant="top" src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
   <Card.Body>
-    <Card.Title>Rohingya</Card.Title>
+    <Card.Title>Person 1</Card.Title>
     <Card.Text>
       Some quick example text to build on the card title and make up the bulk of
       the card's content.
@@ -51,7 +46,7 @@ const Cards = () => {
 <Card style={{ width: '18rem' }}>
   <Card.Img variant="top" src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
   <Card.Body>
-    <Card.Title>Uighur</Card.Title>
+    <Card.Title>Person 2</Card.Title>
     <Card.Text>
       Some quick example text to build on the card title and make up the bulk of
       the card's content.
@@ -67,24 +62,7 @@ const Cards = () => {
 <Card style={{ width: '18rem' }}>
   <Card.Img variant="top" src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
   <Card.Body>
-    <Card.Title>Afghanistan</Card.Title>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
- 
-  </Card.Body>
-
-</Card>
-<Button variant="primary" className="mt-3" style={{ width: '18rem' }} >Go somewhere</Button>
-</Col>
-
-
-<Col xs={12} md={4}>
-<Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
-  <Card.Body>
-    <Card.Title>Yemen</Card.Title>
+    <Card.Title>Person 3</Card.Title>
     <Card.Text>
       Some quick example text to build on the card title and make up the bulk of
       the card's content.
@@ -101,7 +79,24 @@ const Cards = () => {
 <Card style={{ width: '18rem' }}>
   <Card.Img variant="top" src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
   <Card.Body>
-    <Card.Title>Syria</Card.Title>
+    <Card.Title>Person 3</Card.Title>
+    <Card.Text>
+      Some quick example text to build on the card title and make up the bulk of
+      the card's content.
+    </Card.Text>
+ 
+  </Card.Body>
+
+</Card>
+<Button variant="primary" className="mt-3" style={{ width: '18rem' }} >Go somewhere</Button>
+</Col>
+
+
+<Col xs={12} md={4}>
+<Card style={{ width: '18rem' }}>
+  <Card.Img variant="top" src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
+  <Card.Body>
+    <Card.Title>Person 4</Card.Title>
     <Card.Text>
       Some quick example text to build on the card title and make up the bulk of
       the card's content.
@@ -119,7 +114,7 @@ const Cards = () => {
 <Card style={{ width: '18rem' }}>
   <Card.Img variant="top" src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
   <Card.Body>
-    <Card.Title>Somalia</Card.Title>
+    <Card.Title>Person 5</Card.Title>
     <Card.Text>
       Some quick example text to build on the card title and make up the bulk of
       the card's content.
@@ -135,7 +130,7 @@ const Cards = () => {
 <Card style={{ width: '18rem' }}>
   <Card.Img variant="top" src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
   <Card.Body>
-    <Card.Title>India</Card.Title>
+    <Card.Title>Person 6</Card.Title>
     <Card.Text>
       Some quick example text to build on the card title and make up the bulk of
       the card's content.
@@ -152,7 +147,7 @@ const Cards = () => {
 <Card style={{ width: '18rem' }}>
   <Card.Img variant="top" src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
   <Card.Body>
-    <Card.Title>Palestine</Card.Title>
+    <Card.Title>Person 7</Card.Title>
     <Card.Text>
       Some quick example text to build on the card title and make up the bulk of
       the card's content.
@@ -168,63 +163,13 @@ const Cards = () => {
 <Card style={{ width: '18rem' }}>
   <Card.Img variant="top" src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
   <Card.Body>
-    <Card.Title>Mali</Card.Title>
+    <Card.Title>Person 8</Card.Title>
     <Card.Text>
       Some quick example text to build on the card title and make up the bulk of
       the card's content.
     </Card.Text>
  
   </Card.Body>
-
-</Card>
-<Button variant="primary" className="mt-3" style={{ width: '18rem' }} >Go somewhere</Button>
-</Col>
-
-<Col xs={12} md={4}>
-<Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
-  <Card.Body>
-    <Card.Title>Central African Republic</Card.Title>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
- 
-  </Card.Body>
-  </Card>
-<Button variant="primary" className="mt-3" style={{ width: '18rem' }} >Go somewhere</Button>
-</Col>
-
-  <Col xs={12} md={4}>
-<Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
-  <Card.Body>
-    <Card.Title>Mozambique</Card.Title>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
- 
-  </Card.Body>
-
-
-</Card>
-<Button variant="primary" className="mt-3" style={{ width: '18rem' }} >Go somewhere</Button>
-</Col>
-
-
-<Col xs={12} md={4}>
-<Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
-  <Card.Body>
-    <Card.Title>Sudan</Card.Title>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
- 
-  </Card.Body>
-
 
 </Card>
 <Button variant="primary" className="mt-3" style={{ width: '18rem' }} >Go somewhere</Button>
@@ -235,10 +180,4 @@ const Cards = () => {
   );
 };
 
-export default Cards;
-
-
-
-
-
-
+export default Beneficiaries;

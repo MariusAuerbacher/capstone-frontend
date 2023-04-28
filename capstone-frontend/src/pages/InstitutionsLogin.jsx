@@ -2,8 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import {useDispatch} from "react-redux"
-import { SET_IROLE, SET_INSTITUTION } from "../redux/actions";
-import { Link } from "react-router-dom";
+import { SET_ROLE, SET_USER } from "../redux/actions";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
@@ -11,25 +11,27 @@ import { Link } from "react-router-dom";
 const InstitutionsLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate()
 
   const dispatch = useDispatch()
 
   const InstitutionLoginHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/institutions/ilogin", {
+      const res = await axios.post("/institutions/login", {
         email,
         password,
       });
       localStorage.setItem("token", res.data.token)
       dispatch({
-        type: SET_INSTITUTION,
+        type: SET_USER,
         payload: res.data.institution
       })
       dispatch({
-        type: SET_IROLE,
+        type: SET_ROLE,
         payload: res.data.role
       })
+      navigate("/institutionbeneficiaries")
     } catch (error) {
       console.log(error.response.data.message);
     }

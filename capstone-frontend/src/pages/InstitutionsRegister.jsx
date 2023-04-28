@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import {  Col, Container, Form, Row } from "react-bootstrap";
 import { SET_INSTITUTION, SET_IROLE } from "../redux/actions";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const InstitutionsRegister = () => {
   const [name, setName] = useState("");
@@ -15,11 +16,11 @@ const InstitutionsRegister = () => {
   const [politics, setPolitics] = useState("");
   const [image, setImage] = useState("");
   const dispatch = useDispatch();
-
+  const navigate = useNavigate()
   const institutionRegistrationHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/institutions/iregister", {
+      const res = await axios.post("/institutions/register", {
         name,
         email,
         password,
@@ -39,6 +40,7 @@ const InstitutionsRegister = () => {
         type: SET_IROLE,
         payload: res.data.role,
       });
+      navigate("/ilogin")
     } catch (error) {
       console.log(error);
     }

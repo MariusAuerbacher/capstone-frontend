@@ -12,9 +12,12 @@ import Country from "./pages/Country";
 import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { SET_USER } from "./redux/actions";
+import { SET_ROLE, SET_USER } from "./redux/actions";
 import InstitutionsRegister from "./pages/InstitutionsRegister";
 import InstitutionsLogin from "./pages/InstitutionsLogin";
+import Beneficiaries from "./pages/Beneficiaries";
+import InstitutionBeneficiaries from "./pages/InstitutionBeneficiaries";
+import EditBeneficiary from "./pages/EditBeneficiary";
 //import { Toaster } from 'react-hot-toast';
 
 function App() {
@@ -23,14 +26,18 @@ function App() {
 
   const getProfile = async () => {
     try {
-      const res = await axios.get("/users/me", {
+      const res = await axios.get("/profile", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
       dispatch({
         type: SET_USER,
-        payload: res.data
+        payload: res.data.user
+      })
+      dispatch({
+        type: SET_ROLE,
+        payload: res.data.role
       })
     } catch (error) {
       console.log(error.response.data.message);
@@ -71,6 +78,9 @@ function App() {
         <Route path="/iregister" element={<InstitutionsRegister />} />
         <Route path="/country/:name" element={<Country />} />
         <Route path="/cards" element={<Cards />} />
+        <Route path="/beneficiaries" element={<Beneficiaries />} />
+        <Route path="/institutionbeneficiaries" element={<InstitutionBeneficiaries />} />
+        <Route path="/editbeneficiary" element={<EditBeneficiary />} />
       </Routes>
       <Vision />
       <Cards />

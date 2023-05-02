@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import {useNavigate } from "react-router-dom";
 import "../css/Cards.css"
 
@@ -12,7 +12,7 @@ const Cards = () => {
   const navigate = useNavigate()
   const onRohingyaHandler = () => {
    
-    navigate("/country/rohingya")
+    navigate("/beneficiaries")
   }
   return (
     <>

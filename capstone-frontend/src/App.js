@@ -18,6 +18,8 @@ import InstitutionsLogin from "./pages/InstitutionsLogin";
 import Beneficiaries from "./pages/Beneficiaries";
 import InstitutionBeneficiaries from "./pages/InstitutionBeneficiaries";
 import EditBeneficiary from "./pages/EditBeneficiary";
+import Payment from "./pages/Payment";
+import PaymentSuccess from "./components/PaymentSuccess";
 //import { Toaster } from 'react-hot-toast';
 
 function App() {
@@ -81,6 +83,8 @@ function App() {
         <Route path="/beneficiaries" element={<Beneficiaries />} />
         <Route path="/institutionbeneficiaries" element={<InstitutionBeneficiaries />} />
         <Route path="/editbeneficiary" element={<EditBeneficiary />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/payment-success" element={<PaymentSuccess />} />
       </Routes>
       <Vision />
       <Cards />

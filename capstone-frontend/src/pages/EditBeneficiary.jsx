@@ -1,10 +1,11 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Button, Container, Form, Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 
 
 
-const EditBeneficiary = ({ handleClose, edit, experience }) => {
+const EditBeneficiary = () => {
   const [beneficiary, setBeneficiary] = useState({
     name: "",
     email: "",
@@ -20,12 +21,19 @@ const EditBeneficiary = ({ handleClose, edit, experience }) => {
 
 const dispatch = useDispatch()
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     const beneficiaryCopy = {...beneficiary}
     beneficiaryCopy.number = +beneficiaryCopy.number
     beneficiaryCopy.paymentOptions = beneficiaryCopy.paymentOptions.split(",")
     console.log(beneficiaryCopy)
+    const res = await axios.post("/beneficiaries/register", beneficiaryCopy, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token")
+      }
+    })
+    console.log(res.data)
+
   };
   /*const addImageHandler = (e) => {
     e.preventDefault();

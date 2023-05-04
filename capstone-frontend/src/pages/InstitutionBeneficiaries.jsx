@@ -194,6 +194,7 @@ const InstitutionBeneficiaries = () => {
 </Col>
         </Row>
       </Container>
+      <hr/>
     </>
   );
 };

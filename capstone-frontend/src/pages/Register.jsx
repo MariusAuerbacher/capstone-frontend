@@ -4,6 +4,7 @@ import { Col, Container, Form, Row } from "react-bootstrap";
 import { SET_ROLE, SET_USER } from "../redux/actions";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import "../css/Register.css"
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -33,13 +34,15 @@ const Register = () => {
       console.log(error.response.data.message);
     }
   };
-  
+  const registerInstitutionHandler=()=> {
+    navigate("/iregister")
+  }
 
   return (
     <>
-      <Container id="register">
+      <Container id="register" className="my-5 register-body">
         <Row>
-          <Col xs={12} md={6}>
+          <Col xs={12} md={7} className="mt-5">
             <h2>Create a Donator Account</h2>
             <p>Create an account today. Simply fill in the form below and start donating</p>
 
@@ -47,6 +50,7 @@ const Register = () => {
               <Form.Group>
                 <Form.Label>Name</Form.Label>
                 <Form.Control
+                 className="mb-2"
                   type="text"
                   placeholder="Your name"
                   name="name"
@@ -62,6 +66,7 @@ const Register = () => {
                 <Form.Control
                   type="email"
                   placeholder="example@gmail.com"
+                  className="mb-2"
                   value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
@@ -72,6 +77,7 @@ const Register = () => {
               <Form.Group>
                 <Form.Label>Password</Form.Label>
                 <Form.Control
+                 className="mb-3"
                   type="password"
                   placeholder="Your password"
                   value={password}
@@ -84,39 +90,46 @@ const Register = () => {
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Confirm your password" />
           </Form.Group>*/}
+          <label className="d-flex mb-3">
               <input
                 name="terms"
                 type="checkbox"
-                value="1"
+                value="value"
                 id="terms"
-                className="tml-checkbox"
-              ></input>
+                className="tml-checkbox mx-2"
+                aria-label="Text input with checkbox"
+              >
+              </input>
+
+              Send me emails and updates
+              </label>
               <button
                 name="submit"
                 type="submit"
-                className="btn btn-primary btn-block btn-xl"
+                className="btn btn-primary btn-block btn-xl register-button mb-2"
               >
                 Register
               </button>
             </Form>
 
-            <ul className="tml-links">
-              <li className="tml-login-link">
-                <Link to="/login">Log in</Link>
-              </li>
-              <li className="tml-lostpassword-link">
-                <Link to="/login">Lost your password?</Link>
-              </li>
-            </ul>
+            <div className="tml-links mb-5">
+              
+                <Link className="text-decoration-none register-link d-block mb-2" to="/login">Log in</Link>
+                <Link className="text-decoration-none register-link d-block mb-2" to="/ilogin">Log in as an Institution</Link>
+            
+                <Link className="text-decoration-none register-link" to="/login">Lost your password?</Link>
+           
+            </div>
           </Col>
 
 
 
 
 
-          <Col xs={12} md={6}>
-            <h2>Registering an Institution</h2>
-            <p>If you would like to register an Institution to help needy people in your community click <a href="/iregister">here</a></p>
+          <Col xs={12} md={4} className="mt-5"> 
+            <h2>Register an Institution</h2>
+            <h6 className="institution-registration-text mt-4">If you would like to register an Institution and be part of Ummati to help needy people directly click <button onClick={registerInstitutionHandler} className="button-as-anchorTag">here</button> and start helping others today!</h6>
+            <button className="btn btn-primary btn-block btn-xl register-button mt-4" onClick={registerInstitutionHandler}>Join us today</button>
 
           
           </Col>
@@ -126,6 +139,7 @@ const Register = () => {
        
     
       </Container>
+      <hr/>
     </>
   );
 };

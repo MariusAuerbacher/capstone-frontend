@@ -38,6 +38,7 @@ const Payment = () => {
          <CheckoutForm price={price} />
         </Elements>
       )}
+        <hr/>
     </>
   );
 };

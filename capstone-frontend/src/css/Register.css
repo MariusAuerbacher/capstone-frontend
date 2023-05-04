@@ -1,0 +1,25 @@
+.register-body{
+  min-height: 44rem
+}
+
+.register-button{
+  background-color: #124a9e
+}
+
+.register-link{
+  color:  #124a9e
+}
+
+.institution-registration-text{
+  line-height: 2rem;
+}
+
+.register-institution-button{
+  background-color: #124a9e
+}
+
+.button-as-anchorTag{
+  border: none;
+  color: #124a9e;
+  text-decoration: underline;
+}

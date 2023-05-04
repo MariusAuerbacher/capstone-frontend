@@ -1,0 +1,44 @@
+.card-buttons {
+  background-color: #124a9e;
+}
+
+.card-body-colour {
+  background-color: transparent;
+  border: 3px solid black;
+}
+
+.card-body-text {
+  background-color: #dee4ec;
+}
+
+.card-body-text:hover {
+  background-color: black;
+  color: white;
+}
+
+.card-images{
+   border-bottom: 3px solid black;
+   border-radius: 0%;
+}
+
+.card-image{
+  border-bottom: 3px solid black;
+  border-radius: 0%;
+  height: 20rem
+}
+
+
+.card-body-height{
+  background-color: transparent;
+  border: 3px solid black;
+  height: 45rem;
+}
+
+.beneficiary-card-buttons{
+  background-color: #124a9e;
+  width: 26rem;
+}
+
+.cards-form{
+  margin-right: 1rem
+}

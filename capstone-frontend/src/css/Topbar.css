@@ -8,6 +8,8 @@
 
 .whole-brand{
  justify-content: space-between;
+ background-color: rgb(40, 38, 56);
+ color: white
 }
 
 .top-outline{
@@ -15,5 +17,49 @@
 }
 
 .topbar-button{
- margin-right: auto
+ margin-right: auto;
+}
+
+.topbar-colour{
+  background-color: #124a9e
+}
+
+.topbar-logo{
+  margin-left: 2rem;
+  border: 1px solid white;
+  padding: 1rem;
+  padding-inline: 2rem;
+  color: white
+}
+
+.topbar-logo:hover{
+  color: white
+}
+
+.topbar-text{
+  color: white;
+}
+
+.topbar-text:visited,
+.topbar-text:focus,
+.topbar-text:hover,
+.topbar-text:active{
+  text-decoration: none !important;
+  color: white  !important;;
+}
+
+.topbar-lower-buttons{
+  background-color: #124a9e;
+  color: white;
+  border-radius: 7%;
+  margin-left: 5px
+}
+
+.logout-button{
+  margin-right: 1.3rem;
+  margin-left: 2rem
+}
+
+.topbar-policy{
+  color: white;
 }

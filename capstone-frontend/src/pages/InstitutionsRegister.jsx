@@ -240,6 +240,7 @@ const InstitutionsRegister = () => {
           </Col>
         </Row>
       </Container>
+      <hr/>
     </>
   );
 };

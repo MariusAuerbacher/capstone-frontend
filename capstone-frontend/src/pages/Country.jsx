@@ -70,7 +70,7 @@ const Country = () => {
 
         </Row>
       </Container>
-   
+      <hr/>
     </>
   );
 };

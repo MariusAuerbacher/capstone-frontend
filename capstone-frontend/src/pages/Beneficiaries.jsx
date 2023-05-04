@@ -30,12 +30,12 @@ const Beneficiaries = () => {
 
   return (
     <>
-      <form className="d-flex justify-content-end">
+      <form className="d-flex justify-content-end cards-form mt-2">
         <input type="text" name="name" placeholder="Search" />
         <input type="submit" value="Search" />
       </form>
 
-      <div className="d-flex justify-content-end button-urgent-appeals mt-2">
+      <div className="d-flex justify-content-end button-urgent-appeals mt-2 cards-form">
         <Button variant="danger" style={{ width: "16rem" }}>
           Urgent Appeals
         </Button>
@@ -45,14 +45,14 @@ const Beneficiaries = () => {
         <Row>
           {beneficiaries.map((beneficiary) => {
             return (
-              <Col xs={12} md={4}  key={beneficiary._id}>
-                <Card style={{ width: "18rem", height: "45rem" }}>
+              <Col xs={12} md={4} key={beneficiary._id} className="mx-5">
+                <Card className="card-body-height">
                   <Card.Img
-                    style={{ width: "18rem", height: "18rem" }}
+                    className="card-image"
                     variant="top"
                     src={beneficiary.image}
                   />
-                  <Card.Body>
+                  <Card.Body className="card-body-text">
                     <Card.Title>{beneficiary.name}</Card.Title>
                     <br />
                     <Card.Subtitle>{beneficiary.category}</Card.Subtitle>
@@ -85,11 +85,11 @@ const Beneficiaries = () => {
                   </Card.Body>
                 </Card>
                 <Button
-                  variant="primary"
-                  className="mt-3 mb-3"
-                  style={{ width: "18rem" }}
-                  onClick={()=>{
-                    navigate(`/payment?institution=${beneficiary.institution._id}&beneficiary=${beneficiary._id}`)
+                  className="mt-3 mb-3 beneficiary-card-buttons"
+                  onClick={() => {
+                    navigate(
+                      `/payment?institution=${beneficiary.institution._id}&beneficiary=${beneficiary._id}`
+                    );
                   }}
                 >
                   Donate Now
@@ -99,6 +99,7 @@ const Beneficiaries = () => {
           })}
         </Row>
       </Container>
+      <hr />
     </>
   );
 };

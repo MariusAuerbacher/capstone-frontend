@@ -220,6 +220,7 @@ const dispatch = useDispatch()
       </Modal.Body>
  
       </Container>
+      <hr/>
     </>
   );
 };

@@ -9,12 +9,13 @@ import {
 import "../css/Topbar.css"
 import { useDispatch } from "react-redux";
 import { SET_ROLE, SET_USER } from "../redux/actions";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
 
 const Topbar = () => {
-
+const navigate = useNavigate();
 const dispatch = useDispatch()
 const logoutHandler= () => {
   localStorage.removeItem("token")
@@ -26,66 +27,69 @@ const logoutHandler= () => {
     type: SET_ROLE,
     payload: null
   })
+  navigate("/")
 }
   return (
     <>
 
-      <Navbar  bg="primary" variant="dark" className="d-flex justify-content-center"  >
+      <Navbar  variant="dark" className="d-flex justify-content-center topbar-colour"  >
       <Nav>
       <Navbar.Brand  className="mx-3">Make a</Navbar.Brand>
       <NavDropdown title="One Time" id="basic-nav-dropdown" className="top-outline">
-        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.1">Weekly</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.2">Monthly</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.3">Yearly</NavDropdown.Item>
         <NavDropdown.Divider />
-        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.4">Adoption</NavDropdown.Item>
       </NavDropdown>
     
       <Navbar.Brand  className="mx-3">donation of</Navbar.Brand>
       <NavDropdown title="$ Amount" id="basic-nav-dropdown" className="top-outline">
-        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.1">$ 10</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.2">$ 50</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.3">$100</NavDropdown.Item>
         <NavDropdown.Divider />
-        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.4">Own Amount</NavDropdown.Item>
       </NavDropdown>
 
       <Navbar.Brand className="mx-3">to</Navbar.Brand>
       <NavDropdown title="Where Needed Most" id="basic-nav-dropdown" className="top-outline">
-        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.1">Medical</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.2">Orphan</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.3">Natural Disaster</NavDropdown.Item>
         <NavDropdown.Divider />
-        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.4">Choose another Category</NavDropdown.Item>
       </NavDropdown>
     </Nav>
     <div className="mx-5">
 <Button variant="outline-light" size="lg" className="ml-4 px-4">
          Donate
           </Button>
-  <span className="px-4 ml-5">100% Donation Policy</span>
+  <span className="px-4 ml-5 topbar-policy">100% Donation Policy</span>
   </div>
       </Navbar>
      
       <div>
-      <Navbar bg="light" variant="light" className="d-flex whole-brand">
-        <Navbar.Brand href="#home">Logo</Navbar.Brand>
+      <Navbar variant="light" className="d-flex whole-brand">
+        <Navbar.Brand href="#home" className="topbar-logo">Ummati</Navbar.Brand>
         <Nav className="justify-content-between mr-auto">
-          <Nav.Link href="#features">Appeals</Nav.Link>
-          <Nav.Link href="#cards">Projects</Nav.Link>
-          <Nav.Link href="#pricing">Ramadan</Nav.Link>
-          <Nav.Link href="#pricing">Get Involved</Nav.Link>
-          <Nav.Link href="#pricing">About</Nav.Link>
-          <Nav.Link href="#footer">Contact</Nav.Link>
+          <Nav.Link href="#features" className="topbar-text text-decoration-none">Appeals</Nav.Link>
+          <Nav.Link href="#cards" className="topbar-text text-decoration-none">Projects</Nav.Link>
+          <Nav.Link href="#ramadan" className="topbar-text text-decoration-none">Ramadan</Nav.Link>
+          <Nav.Link href="#involve" className="topbar-text">Get Involved</Nav.Link>
+          <Nav.Link href="#about" className="topbar-text">About</Nav.Link>
+          <Nav.Link href="#footer" className="topbar-text">Contact</Nav.Link>
         </Nav>
   
- 
-        <p> <a href="/login">Login </a> / <a href="/register"> Register</a>
-        </p>
+        <div>
+          <Link to="/login"> <button className="topbar-lower-buttons">Login</button></Link>
+          <Link to="/register">
+        <button className="topbar-lower-buttons"> Register</button>
+        </Link>
    
-        <p onClick={logoutHandler}> Logout
-        </p>
-    
+        <button onClick={logoutHandler} className="topbar-lower-buttons logout-button" > Logout
+        </button>
+        </div>
       </Navbar>
       
 </div>

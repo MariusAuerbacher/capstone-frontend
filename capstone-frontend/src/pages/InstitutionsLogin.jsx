@@ -38,18 +38,19 @@ const InstitutionsLogin = () => {
   };
   return (
     <>
-      <Container>
+        <Container id="#login" className="d-flex justify-content-center my-5 login-container">
         <Row>
-          <Col xs={12} md={6}>
-            <h2>Sign in</h2>
-            <p>Enter your registered details below</p>
-            <Form onSubmit={InstitutionLoginHandler}>
+          <Col xs={12} md={12}>
+            <h2 className="mb-4">Sign in</h2>
+            <p className="mb-4">Enter your registered details below</p>
+            <Form onSubmit={InstitutionLoginHandler }>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
                   type="email"
                   placeholder="Enter email"
                   value={email}
+                  className="mb-3"
                   onChange={(e) => {
                     setEmail(e.target.value);
                   }}
@@ -62,44 +63,49 @@ const InstitutionsLogin = () => {
                   type="password"
                   placeholder="Password"
                   value={password}
+                  className="mb-4"
                   onChange={(e) => {
                     setPassword(e.target.value);
                   }}
                 />
               </Form.Group>
+              <label className="d-flex mb-3">
+              <input
+                name="terms"
+                type="checkbox"
+                value="value"
+                id="terms"
+                className="tml-checkbox mx-2"
+                aria-label="Text input with checkbox"
+              >
+              </input>
 
-              <div class="tml-field-wrap tml-rememberme-wrap">
-                <input
-                  name="rememberme"
-                  type="checkbox"
-                  value="forever"
-                  id="rememberme"
-                  class="tml-checkbox"
-                />
-                <label class="tml-label" for="rememberme">
-                  Remember Me
-                </label>
-              </div>
-              <Button variant="primary" type="submit">
+             Remember me
+              </label>
+              <button
+                name="submit"
+                type="submit"
+                className="btn btn-primary btn-block btn-xl login-button mb-4"
+              >
                 Login
-              </Button>
+              </button>
+             
             </Form>
 
-            <ul class="tml-links">
-              <li class="tml-register-link">
-                <a href="/register">Register</a>
-              </li>
-              <li class="tml-lostpassword-link">
-                <a href="/register">Forgot your password?</a>
-              </li>
-              <li class="tml-register-link">
-                <Link to="/login">Login as a User</Link>
-              </li>
-            </ul>
+
+            <div className="tml-links mb-5">
+              
+              <Link className="text-decoration-none login-link d-block mb-2" to="/login">Register</Link>
+              <Link className="text-decoration-none login-link d-block mb-2" to="/login">Login as a User</Link>
+              <Link className="text-decoration-none login-link d-block mb-2" to="/login">Forgot your password?</Link>
+         
+          </div>
           </Col>
         </Row>
-
+      
       </Container>
+    
+      <hr/>
     </>
   );
 };

@@ -21,10 +21,10 @@ import EditBeneficiary from "./pages/EditBeneficiary";
 import Payment from "./pages/Payment";
 import PaymentSuccess from "./components/PaymentSuccess";
 //import { Toaster } from 'react-hot-toast';
+import "./css/App.css";
 
 function App() {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const getProfile = async () => {
     try {
@@ -35,19 +35,19 @@ function App() {
       });
       dispatch({
         type: SET_USER,
-        payload: res.data.user
-      })
+        payload: res.data.user,
+      });
       dispatch({
         type: SET_ROLE,
-        payload: res.data.role
-      })
+        payload: res.data.role,
+      });
     } catch (error) {
       console.log(error.response.data.message);
     }
   };
   useEffect(() => {
     getProfile();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   /*const getIProfile = async () => {
@@ -72,8 +72,9 @@ function App() {
   return (
     <>
       <Topbar />
-      <MainSlides />
       <Routes>
+        <Route path="/" element={<MainSlides />} />
+        <Route path="/" element={<Vision />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/ilogin" element={<InstitutionsLogin />} />
@@ -81,12 +82,14 @@ function App() {
         <Route path="/country/:name" element={<Country />} />
         <Route path="/cards" element={<Cards />} />
         <Route path="/beneficiaries" element={<Beneficiaries />} />
-        <Route path="/institutionbeneficiaries" element={<InstitutionBeneficiaries />} />
+        <Route
+          path="/institutionbeneficiaries"
+          element={<InstitutionBeneficiaries />}
+        />
         <Route path="/editbeneficiary" element={<EditBeneficiary />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/payment-success" element={<PaymentSuccess />} />
       </Routes>
-      <Vision />
       <Cards />
       <Messaging />
       <Footer />

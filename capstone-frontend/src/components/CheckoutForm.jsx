@@ -1,6 +1,8 @@
 import {PaymentElement, useElements, useStripe} from '@stripe/react-stripe-js';
 import axios from 'axios';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import "../css/CheckoutForm.css"
+
 
 const CheckoutForm = ({price}) => {
   const stripe = useStripe();
@@ -47,7 +49,7 @@ const CheckoutForm = ({price}) => {
   return (
     <form onSubmit={handleSubmit}>
       <PaymentElement />
-      <button>Submit</button>
+      <button type="submit" className="mb-5 mt-3 checkout-pay-button">Pay Now</button>
     </form>
   );
 };

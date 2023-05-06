@@ -9,7 +9,8 @@
 .whole-brand{
  justify-content: space-between;
  background-color: rgb(40, 38, 56);
- color: white
+ color: white;
+ /*margin-top: 4rem*/
 }
 
 .top-outline{

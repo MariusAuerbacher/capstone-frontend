@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Button, Form, FormControl } from "react-bootstrap";
+import { Button, Col, Container, Form, FormControl, Row } from "react-bootstrap";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "../components/CheckoutForm";
+import "../css/Payment.css"
 
 
 const stripePromise = loadStripe(
@@ -12,6 +13,7 @@ const stripePromise = loadStripe(
 
 const Payment = () => {
   const [price, setPrice] = useState("");
+  const [funds, setFunds] = useState("")
   const [clientSecret, setClientSecret] = useState(null);
   const getClientSecret = async (e) => {
     e.preventDefault();
@@ -22,23 +24,44 @@ const Payment = () => {
 
   return (
     <>
+    <Container id="#login" className="d-flex justify-content-center my-5 login-container">
+        <Row>
+          <Col xs={12} md={12}>
+            <h5 className="my-5">Please Enter the Amount you would like to donate</h5>
       <Form onSubmit={getClientSecret}>
         <FormControl
           type="text"
           placeholder="Enter Amount"
-          value={price}
+          className="mb-4"
+          value={price} 
           onChange={(e) => {
             setPrice(e.target.value);
           }}
         />
-        <Button type="submit">Pay now</Button>
+        <Button type="submit" className="mb-5 pay-now-button">Donate</Button>
       </Form>
       {clientSecret && (
         <Elements stripe={stripePromise} options={{clientSecret}}>
          <CheckoutForm price={price} />
         </Elements>
       )}
-        <hr/>
+    
+    <Form.Label className="mb-3">Would you like to add 1$ to your donation to help run this website?</Form.Label>
+              <Form.Group controlId="formBasicCheckbox mb-3">
+                <Form.Check
+                  className="mb-3"
+                  type="checkbox"
+                  label="Yes, donate 1$ to run this website"
+                  /*value={funds}
+                  onChange={(e) => {
+                    setFunds(e.target.value);
+                  }}*/
+                />
+                </Form.Group>
+   
+        </Col>
+        </Row>
+        </Container>
     </>
   );
 };

@@ -1,0 +1,12 @@
+.checkout-pay-button{
+  background-color: #124a9e;
+  color: white;
+  width: 5.5rem;
+  height: 2.2rem;
+  border: none;
+  border-radius:7%;
+}
+
+.checkout-pay-button:hover{
+  background-color: #295dcf ;
+}

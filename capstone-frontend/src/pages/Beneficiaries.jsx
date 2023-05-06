@@ -30,7 +30,7 @@ const Beneficiaries = () => {
 
   return (
     <>
-      <form className="d-flex justify-content-end cards-form mt-2">
+      <form  className="d-flex justify-content-end cards-form mt-2">
         <input type="text" name="name" placeholder="Search" />
         <input type="submit" value="Search" />
       </form>
@@ -41,7 +41,7 @@ const Beneficiaries = () => {
         </Button>
       </div>
 
-      <Container id="cards">
+      <Container >
         <Row>
           {beneficiaries.map((beneficiary) => {
             return (

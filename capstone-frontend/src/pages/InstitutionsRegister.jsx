@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import {  Col, Container, Form, Row } from "react-bootstrap";
+import { Col, Container, Form, Row } from "react-bootstrap";
 import { SET_INSTITUTION, SET_IROLE } from "../redux/actions";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -16,7 +16,7 @@ const InstitutionsRegister = () => {
   const [politics, setPolitics] = useState("");
   const [image, setImage] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const institutionRegistrationHandler = async (e) => {
     e.preventDefault();
     try {
@@ -40,26 +40,23 @@ const InstitutionsRegister = () => {
         type: SET_IROLE,
         payload: res.data.role,
       });
-      navigate("/ilogin")
+      navigate("/ilogin");
     } catch (error) {
       console.log(error);
     }
   };
   return (
     <>
-      <Container>
+      <Container className="d-flex justify-content-center my-5 login-container">
         <Row>
-          <Col xs={12} md={6}>
-            <h2>Registering an Institution</h2>
-            <p>
-              If you would like to register an Institution to help needy people
-              in your community click <a href="/institutions">here</a>
-            </p>
+          <Col xs={12} md={12}>
+            <h2 className="mb-5">Registering an Institution</h2>
 
             <Form onSubmit={institutionRegistrationHandler}>
               <Form.Group>
                 <Form.Label>Name</Form.Label>
                 <Form.Control
+                  className="mb-3"
                   type="text"
                   placeholder="Your name"
                   name="name"
@@ -73,6 +70,7 @@ const InstitutionsRegister = () => {
               <Form.Group>
                 <Form.Label>Email</Form.Label>
                 <Form.Control
+                  className="mb-3"
                   type="email"
                   placeholder="example@gmail.com"
                   value={email}
@@ -85,6 +83,7 @@ const InstitutionsRegister = () => {
               <Form.Group>
                 <Form.Label>Password</Form.Label>
                 <Form.Control
+                  className="mb-3"
                   type="password"
                   placeholder="Your password"
                   value={password}
@@ -97,8 +96,9 @@ const InstitutionsRegister = () => {
               <Form.Group>
                 <Form.Label>Type of Institution</Form.Label>
                 <Form.Control
+                  className="mb-3"
                   type="text"
-                  placeholder="Type of Institution"
+                  placeholder="Type of Institution (e.g. Mosque)"
                   value={type}
                   onChange={(e) => {
                     setType(e.target.value);
@@ -109,6 +109,7 @@ const InstitutionsRegister = () => {
               <Form.Group controlId="ControlTextarea1">
                 <Form.Label>Description</Form.Label>
                 <Form.Control
+                  className="mb-3"
                   as="textarea"
                   placeholder="Please describe your institution"
                   rows={3}
@@ -122,6 +123,7 @@ const InstitutionsRegister = () => {
               <Form.Group>
                 <Form.Label>Phone Number</Form.Label>
                 <Form.Control
+                  className="mb-3"
                   type="number"
                   placeholder="Phone Number"
                   value={phone}
@@ -131,63 +133,120 @@ const InstitutionsRegister = () => {
                 />
               </Form.Group>
 
-
-
               <Form.Group controlId="formGridAddress1">
-    <Form.Label>Address</Form.Label>
-    <Form.Control placeholder="1234 Main St" />
-  </Form.Group>
+                <Form.Label>Address</Form.Label>
+                <Form.Control placeholder="Your address" className="mb-3" />
+              </Form.Group>
 
-  <Form.Group controlId="formGridAddress2">
-    <Form.Label>Address 2</Form.Label>
-    <Form.Control placeholder="Apartment, studio, or floor" />
-  </Form.Group>
-
-  <Form.Row>
-    <Form.Group as={Col} controlId="formGridCity">
-      <Form.Label>City</Form.Label>
-      <Form.Control />
-    </Form.Group>
-
-    <Form.Group as={Col} controlId="formGridState">
-      <Form.Label>State</Form.Label>
-      <Form.Control as="select" defaultValue="Choose...">
-        <option>Choose...</option>
-        <option>...</option>
-      </Form.Control>
-    </Form.Group>
-
-    <Form.Group as={Col} controlId="formGridZip">
-      <Form.Label>Zip</Form.Label>
-      <Form.Control />
-    </Form.Group>
-  </Form.Row>
-
-
-
-              <Form.Group controlId="ControlSelect2">
-                <Form.Label>Ways of Receiving Funds</Form.Label>
+              <Form.Group controlId="formGridAddress2">
+                <Form.Label>Address 2</Form.Label>
                 <Form.Control
-                  as="select"
-                  placeholder="How can you receive funds?"
+                  placeholder="Your address additional"
+                  className="mb-3"
+                />
+              </Form.Group>
+
+              <Form.Row>
+                <Form.Group as={Col} controlId="formGridCity">
+                  <Form.Label>City</Form.Label>
+                  <Form.Control className="mb-3" placeholder="Your City" />
+                </Form.Group>
+
+                <Form.Group as={Col} controlId="formGridCity">
+                  <Form.Label>State</Form.Label>
+                  <Form.Control className="mb-3" placeholder="Your State" />
+                </Form.Group>
+
+                <Form.Group as={Col} controlId="formGridZip">
+                  <Form.Label>Post Code</Form.Label>
+                  <Form.Control className="mb-5" placeholder="Post Code" />
+                </Form.Group>
+              </Form.Row>
+
+              <Form.Label className="mb-3">Ways of Receiving Funds</Form.Label>
+              <Form.Group controlId="formBasicCheckbox mb-3">
+                <Form.Check
+                  className="mb-3"
+                  type="checkbox"
+                  label="Visa/Credit Card"
                   value={funds}
                   onChange={(e) => {
                     setFunds(e.target.value);
                   }}
-                  multiple
-                >
-                  <option>Visa/Credit Cards</option>
-                  <option>PayPal</option>
-                  <option>Western Union/Remitly</option>
-                  <option>Cryptocurrency</option>
-                  <option>Mobile Money</option>
-                </Form.Control>
+                />
+                <Form.Check
+                  className="mb-3"
+                  type="checkbox"
+                  label="Cryptocurrency"
+                  value={funds}
+                  onChange={(e) => {
+                    setFunds(e.target.value);
+                  }}
+                />
+                <Form.Check
+                  className="mb-3"
+                  type="checkbox"
+                  label="Hawala Banking"
+                  value={funds}
+                  onChange={(e) => {
+                    setFunds(e.target.value);
+                  }}
+                />
+                <Form.Check
+                  className="mb-3"
+                  type="checkbox"
+                  label="Mobile Money"
+                  value={funds}
+                  onChange={(e) => {
+                    setFunds(e.target.value);
+                  }}
+                /><Form.Check
+                className="mb-3"
+                type="checkbox"
+                label="Remitly /Dahabshil/ Western Union/ Money Transfers"
+                value={funds}
+                onChange={(e) => {
+                  setFunds(e.target.value);
+                }}
+              /><Form.Check
+              className="mb-5"
+              type="checkbox"
+              label="Cash"
+              value={funds}
+              onChange={(e) => {
+                setFunds(e.target.value);
+              }}
+            />
+            
               </Form.Group>
 
-              
+
+              {/*<Form.Group controlId="ControlSelect2">
+                <Form.Label>Ways of Receiving Funds</Form.Label>
+                <Form.Control
+                  className="mb-3"
+                  as="select" multiple
+                  placeholder="Cash"
+                  value={funds}
+                  onChange={(e) => {
+                    setFunds(e.target.value);
+                  }}
+                  
+                >
+                  <option>Visa/Credit Card</option>
+                  <option>Cryptocurrency</option>
+                  <option>Hawala Banking</option>
+                  <option>Mobile Money</option>
+                  <option>PayPal</option>
+                  <option>Western Union/Remitly/Dahabshil</option>
+                  <option>Cash</option>
+                </Form.Control>
+                </Form.Group>*/}
+
               <Form.Label>Political Affiliation</Form.Label>
-              <Form.Group controlId="formBasicCheckbox">
+              <Form.Group controlId="formBasicCheckbox d-flex">
                 <Form.Check
+                  className="mb-5"
                   type="checkbox"
                   label="Are you affiliated with a political party?"
                   value={politics}
@@ -195,11 +254,13 @@ const InstitutionsRegister = () => {
                     setPolitics(e.target.value);
                   }}
                 />
+            
               </Form.Group>
 
               <Form.Group>
-                <Form.Label>Upload an Image</Form.Label>
+                <Form.Label className="mb-3">Upload an Image</Form.Label>
                 <Form.File
+                  className="mb-5"
                   id="ControlFile1"
                   label="Please upload an image of your institution"
                   value={image}
@@ -240,7 +301,7 @@ const InstitutionsRegister = () => {
           </Col>
         </Row>
       </Container>
-      <hr/>
+      <hr />
     </>
   );
 };

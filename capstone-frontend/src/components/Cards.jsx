@@ -3,14 +3,16 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../css/Cards.css";
 
+
 const Cards = () => {
   const navigate = useNavigate();
   const onRohingyaHandler = () => {
     navigate("/beneficiaries");
+    
   };
   return (
     <>
-   <form className="d-flex justify-content-end cards-form" >
+   <form id="cards" className="d-flex justify-content-end cards-form mt-5" >
 <input type="text" name="name" placeholder="Search" />
 <input type="submit" value="Search" />
 </form>
@@ -20,9 +22,9 @@ const Cards = () => {
   Urgent Appeals
 </Button>
 </div>
-     
 
-      <Container id="cards">
+     
+      <Container >
           <Row>
           <Col xs={12} md={4}>
             <Card style={{ width: "18rem" }} className="card-body-colour">

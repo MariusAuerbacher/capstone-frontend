@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Col, Container, Form, Row } from "react-bootstrap";
 import {useDispatch} from "react-redux"
 import { SET_ROLE, SET_USER } from "../redux/actions";
 import { Link, useNavigate } from "react-router-dom";
@@ -41,7 +41,7 @@ const InstitutionsLogin = () => {
         <Container id="#login" className="d-flex justify-content-center my-5 login-container">
         <Row>
           <Col xs={12} md={12}>
-            <h2 className="mb-4">Sign in</h2>
+            <h2 className="mb-4">Sign in as an Institution</h2>
             <p className="mb-4">Enter your registered details below</p>
             <Form onSubmit={InstitutionLoginHandler }>
               <Form.Group controlId="formBasicEmail">

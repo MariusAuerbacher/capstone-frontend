@@ -22,6 +22,7 @@ import Payment from "./pages/Payment";
 import PaymentSuccess from "./components/PaymentSuccess";
 //import { Toaster } from 'react-hot-toast';
 import "./css/App.css";
+import Map from "./components/Map"
 
 function App() {
   const dispatch = useDispatch();
@@ -73,8 +74,9 @@ function App() {
     <>
       <Topbar />
       <Routes>
+
         <Route path="/" element={<MainSlides />} />
-        <Route path="/" element={<Vision />} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/ilogin" element={<InstitutionsLogin />} />

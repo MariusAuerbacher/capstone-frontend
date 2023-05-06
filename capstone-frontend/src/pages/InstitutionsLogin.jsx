@@ -38,7 +38,7 @@ const InstitutionsLogin = () => {
   };
   return (
     <>
-        <Container id="#login" className="d-flex justify-content-center my-5 login-container">
+        <Container id="#login" className="d-flex justify-content-center my-4 login-container">
         <Row>
           <Col xs={12} md={12}>
             <h2 className="mb-4">Sign in as an Institution</h2>

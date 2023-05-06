@@ -9,12 +9,13 @@ const InstitutionsRegister = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [type, setType] = useState("");
+  const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
-  const [phone, setPhone] = useState("");
-  const [funds, setFunds] = useState("");
-  const [politics, setPolitics] = useState("");
+  const [number, setNumber] = useState("");
+  const [paymentOptions, setPaymentOptions] = useState("");
+  const [politics, setPolitics] = useState(false);
   const [image, setImage] = useState("");
+  const [address, setAddress] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const institutionRegistrationHandler = async (e) => {
@@ -23,13 +24,14 @@ const InstitutionsRegister = () => {
       const res = await axios.post("/institutions/register", {
         name,
         email,
-        password,
-        type,
+        category,
         description,
-        phone,
-        funds,
+        number,
+        address,
+        paymentOptions,
         politics,
         image,
+        password,
       });
       localStorage.setItem("token", res.data.token);
       dispatch({
@@ -99,9 +101,9 @@ const InstitutionsRegister = () => {
                   className="mb-3"
                   type="text"
                   placeholder="Type of Institution (e.g. Mosque)"
-                  value={type}
+                  value={category}
                   onChange={(e) => {
-                    setType(e.target.value);
+                    setCategory(e.target.value);
                   }}
                 />
               </Form.Group>
@@ -126,16 +128,23 @@ const InstitutionsRegister = () => {
                   className="mb-3"
                   type="number"
                   placeholder="Phone Number"
-                  value={phone}
+                  value={number}
                   onChange={(e) => {
-                    setPhone(e.target.value);
+                    setNumber(e.target.value);
                   }}
                 />
               </Form.Group>
 
               <Form.Group controlId="formGridAddress1">
                 <Form.Label>Address</Form.Label>
-                <Form.Control placeholder="Your address" className="mb-3" />
+                <Form.Control
+                  placeholder="Your address"
+                  className="mb-3"
+                  value={address}
+                  onChange={(e) => {
+                    setAddress(e.target.value);
+                  }}
+                />
               </Form.Group>
 
               <Form.Group controlId="formGridAddress2">
@@ -169,57 +178,57 @@ const InstitutionsRegister = () => {
                   className="mb-3"
                   type="checkbox"
                   label="Visa/Credit Card"
-                  value={funds}
+                  value={paymentOptions}
                   onChange={(e) => {
-                    setFunds(e.target.value);
+                    setPaymentOptions(e.target.value);
                   }}
                 />
                 <Form.Check
                   className="mb-3"
                   type="checkbox"
                   label="Cryptocurrency"
-                  value={funds}
+                  value={paymentOptions}
                   onChange={(e) => {
-                    setFunds(e.target.value);
+                    setPaymentOptions(e.target.value);
                   }}
                 />
                 <Form.Check
                   className="mb-3"
                   type="checkbox"
                   label="Hawala Banking"
-                  value={funds}
+                  value={paymentOptions}
                   onChange={(e) => {
-                    setFunds(e.target.value);
+                    setPaymentOptions(e.target.value);
                   }}
                 />
                 <Form.Check
                   className="mb-3"
                   type="checkbox"
                   label="Mobile Money"
-                  value={funds}
+                  value={paymentOptions}
                   onChange={(e) => {
-                    setFunds(e.target.value);
+                    setPaymentOptions(e.target.value);
                   }}
-                /><Form.Check
-                className="mb-3"
-                type="checkbox"
-                label="Remitly /Dahabshil/ Western Union/ Money Transfers"
-                value={funds}
-                onChange={(e) => {
-                  setFunds(e.target.value);
-                }}
-              /><Form.Check
-              className="mb-5"
-              type="checkbox"
-              label="Cash"
-              value={funds}
-              onChange={(e) => {
-                setFunds(e.target.value);
-              }}
-            />
-            
+                />
+                <Form.Check
+                  className="mb-3"
+                  type="checkbox"
+                  label="Remitly /Dahabshil/ Western Union/ Money Transfers"
+                  value={paymentOptions}
+                  onChange={(e) => {
+                    setPaymentOptions(e.target.value);
+                  }}
+                />
+                <Form.Check
+                  className="mb-5"
+                  type="checkbox"
+                  label="Cash"
+                  value={paymentOptions}
+                  onChange={(e) => {
+                    setPaymentOptions(e.target.value);
+                  }}
+                />
               </Form.Group>
-
 
               {/*<Form.Group controlId="ControlSelect2">
                 <Form.Label>Ways of Receiving Funds</Form.Label>
@@ -250,11 +259,10 @@ const InstitutionsRegister = () => {
                   type="checkbox"
                   label="Are you affiliated with a political party?"
                   value={politics}
-                  onChange={(e) => {
-                    setPolitics(e.target.value);
+                  onChange={() => {
+                    setPolitics(!politics);
                   }}
                 />
-            
               </Form.Group>
 
               <Form.Group>

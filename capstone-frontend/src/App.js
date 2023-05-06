@@ -1,10 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import Topbar from "./components/Topbar";
 import MainSlides from "./components/MainSlides";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Vision from "./components/Vision";
 import Cards from "./components/Cards";
 import Messaging from "./components/Messaging";
 import Footer from "./components/Footer";
@@ -22,11 +21,11 @@ import Payment from "./pages/Payment";
 import PaymentSuccess from "./components/PaymentSuccess";
 //import { Toaster } from 'react-hot-toast';
 import "./css/App.css";
-import Map from "./components/Map"
+import UserLanding from "./components/UserLanding";
 
 function App() {
   const dispatch = useDispatch();
-
+    const location = useLocation()
   const getProfile = async () => {
     try {
       const res = await axios.get("/profile", {
@@ -48,9 +47,15 @@ function App() {
   };
   useEffect(() => {
     getProfile();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(()=>{
+    window.scrollTo({
+      top: 0
+    })
+  }, [location.pathname])
   /*const getIProfile = async () => {
     try {
       const res = await axios.get("/institutions/me", {
@@ -73,10 +78,12 @@ function App() {
   return (
     <>
       <Topbar />
+     
       <Routes>
 
         <Route path="/" element={<MainSlides />} />
-
+        <Route path="/test" element={ <UserLanding/>}/>
+        <Route path="/test" element={<Messaging />}/>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/ilogin" element={<InstitutionsLogin />} />
@@ -93,7 +100,7 @@ function App() {
         <Route path="/payment-success" element={<PaymentSuccess />} />
       </Routes>
       <Cards />
-      <Messaging />
+   
       <Footer />
       {/*<Toaster/>*/}
     </>

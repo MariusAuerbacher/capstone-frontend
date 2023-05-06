@@ -6,6 +6,8 @@ import axios from "axios";
 
 const Beneficiaries = () => {
   const [beneficiaries, setBeneficiaries] = useState([]);
+  const [filteredBeneficiaries, setFilteredBeneficiaries] = useState([])
+  const [searchText, setSearchText] =useState("")
   //const [institutions, setInstitutions] = useState([]);
   const navigate = useNavigate();
   /*const onRohingyaHandler = () => {
@@ -15,8 +17,23 @@ const Beneficiaries = () => {
     const res = await axios.get("/beneficiaries/");
     console.log(res.data);
     setBeneficiaries(res.data);
+    setFilteredBeneficiaries(res.data)
   };
 
+  const searchHandler = (e) => {
+    e.preventDefault()
+   const result =  beneficiaries.filter((beneficiary)=>{
+      if(beneficiary.category.toLowerCase().includes(searchText.toLowerCase())) return true
+    })
+    setFilteredBeneficiaries(result)
+  }
+
+  const getUrgentBeneficiaries = (e) => {
+    const result =  beneficiaries.filter((beneficiary)=>{
+      if(beneficiary.category.toLowerCase().includes("urgent")) return true
+    })
+    setFilteredBeneficiaries(result)
+  }
   /*const getAllInstitutions = async () => {
     const res = await axios.get("/institutions/");
     console.log(res.data);
@@ -30,20 +47,20 @@ const Beneficiaries = () => {
 
   return (
     <>
-      <form  className="d-flex justify-content-end cards-form mt-2">
-        <input type="text" name="name" placeholder="Search" />
-        <input type="submit" value="Search" />
+      <form  className="d-flex justify-content-end cards-form mt-2" onSubmit={searchHandler}>
+        <input type="text" name="name" placeholder="Search" value={searchText} onChange={(e)=>{setSearchText(e.target.value)}}/>
+        <button type="submit">Search</button>
       </form>
 
       <div className="d-flex justify-content-end button-urgent-appeals mt-2 cards-form">
-        <Button variant="danger" style={{ width: "16rem" }}>
+        <Button variant="danger" style={{ width: "16rem" }} onClick={getUrgentBeneficiaries}>
           Urgent Appeals
         </Button>
       </div>
 
       <Container >
         <Row>
-          {beneficiaries.map((beneficiary) => {
+          {filteredBeneficiaries.map((beneficiary) => {
             return (
               <Col xs={12} md={4} key={beneficiary._id} className="mx-5">
                 <Card className="card-body-height">

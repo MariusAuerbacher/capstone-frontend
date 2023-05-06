@@ -1,0 +1,61 @@
+.sidebar-images {
+
+  height: 2.5em;
+  width: 2.5rem;
+  border-radius: 40%;
+}
+
+.sidebar-headers{
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 25px;
+}
+
+.sidebar-name{
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.sidebar-title{
+    font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.sidebar-button{
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: white;
+  background-color: #124a9e;
+}
+
+.sidebar-button:hover:hover{
+  background-color: white;
+  color: black
+}
+
+.text-muted{
+  font-size: smaller;
+}
+
+.sidebar-company-logo-left{
+  height: 4em;
+  width: 5em;
+  border-radius: 50%;
+}
+
+
+
+.sidebar-modal{
+  padding: 0.5em;
+}
+
+
+
+
+.container-sidebar{
+  border: 1px solid black;
+  padding: 10px
+}

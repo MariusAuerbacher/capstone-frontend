@@ -4,7 +4,7 @@ import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
 //import { useDispatch } from "react-redux";
 import "../css/EditBeneficiaries.css";
 
-const EditBeneficiary = () => {
+const AddBeneficiary = () => {
   const [beneficiary, setBeneficiary] = useState({
     name: "",
     email: "",
@@ -12,7 +12,7 @@ const EditBeneficiary = () => {
     description: "",
     number: "",
     address: "",
-    paymentOptions: "",
+    paymentOptions: false,
     image: "",
     password: "",
   });
@@ -43,7 +43,7 @@ const EditBeneficiary = () => {
       <Container className="d-flex justify-content-center my-5 edit-beneficiary-container">
         
           <Col xs={12} md={6}>
-          <h2 className="mb-4">Edit</h2>
+          <h2 className="mb-4">Add</h2>
             <Modal.Body>
               <div className="notify-section"></div>
               <div className="form">
@@ -166,7 +166,7 @@ const EditBeneficiary = () => {
                   onChange={(e) => 
                     setBeneficiary({
                       ...beneficiary,
-                      paymentOptions: e.target.value,
+                     paymentOptions: e.target.value,
                     })
                   }
                 />
@@ -280,7 +280,7 @@ const EditBeneficiary = () => {
                   </Form.Group>
 
                   <Button variant="primary" type="submit"  className="btn btn-primary btn-block btn-xl login-button mb-4 px-5">
-                    Edit
+                    Add
                   </Button>
                 </Form>
               </div>
@@ -293,4 +293,4 @@ const EditBeneficiary = () => {
   );
 };
 
-export default EditBeneficiary;
+export default AddBeneficiary;

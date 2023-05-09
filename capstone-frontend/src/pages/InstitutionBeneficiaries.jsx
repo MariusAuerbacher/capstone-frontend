@@ -1,200 +1,126 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import {useNavigate } from "react-router-dom";
 import "../css/Cards.css"
+import axios from "axios";
 
 
 const InstitutionBeneficiaries = () => {
-  const navigate = useNavigate()
-  const onBeneficiaryHandler = () => {
-   
-    navigate("/editbeneficiary")
+  const [beneficiaries, setBeneficiaries] = useState([]);
+  const [filteredBeneficiaries, setFilteredBeneficiaries] = useState([])
+  const [searchText, setSearchText] =useState("")
+  //const [institutions, setInstitutions] = useState([]);
+  const navigate = useNavigate();
+  /*const onRohingyaHandler = () => {
+    navigate("/country/rohingya");
+  };*/
+  const getAllBeneficiaries = async () => {
+    const res = await axios.get("/beneficiaries/");
+    console.log(res.data);
+    setBeneficiaries(res.data);
+    setFilteredBeneficiaries(res.data)
+  };
+
+  const searchHandler = (e) => {
+    e.preventDefault()
+   const result =  beneficiaries.filter((beneficiary)=>{
+      if(beneficiary.category.toLowerCase().includes(searchText.toLowerCase())) return true
+    })
+    setFilteredBeneficiaries(result)
   }
-  const onRohingyaHandler = () => {
-   
-    navigate("/country/rohingya")
+
+  const getUrgentBeneficiaries = (e) => {
+    const result =  beneficiaries.filter((beneficiary)=>{
+      if(beneficiary.category.toLowerCase().includes("urgent")) return true
+    })
+    setFilteredBeneficiaries(result)
   }
+  /*const getAllInstitutions = async () => {
+    const res = await axios.get("/institutions/");
+    console.log(res.data);
+    setInstitutions(res.data);
+  };*/
+
+  const addNewBeneficiary= () => {
+   navigate("/add-beneficiary")
+  }
+
+  useEffect(() => {
+    getAllBeneficiaries();
+    //getAllInstitutions()
+  }, []);
   return (
     <>
-  <form className="d-flex justify-content-end">
+  <form className="d-flex justify-content-end cards-form mt-5">
     <input type="text" name="name"  placeholder="Search"  />
   <input type="submit" value="Search"/>
 </form>
 
-<div className="d-flex justify-content-end button-urgent-appeals mt-2">
-<Button variant="danger" style={{ width: '16rem' }}>Urgent Appeals</Button>
+<div className="d-flex justify-content-end button-urgent-appeals mt-2 cards-form">
+<Button variant="success" style={{ width: '16rem' }} onClick={addNewBeneficiary}>Add Beneficiary</Button>
 
 </div>
 
-<div className="d-flex justify-content-end button-urgent-appeals mt-2">
-<Button variant="success" style={{ width: '16rem' }}>Add Beneficiary</Button>
 
-</div>
-
-      <Container id="cards">
+      <Container >
         <Row>
-          <Col xs={12} md={4}>
-<Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
-  <Card.Body>
-    <Card.Title>Person 1</Card.Title>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
- 
-  </Card.Body>
+          {filteredBeneficiaries.map((beneficiary) => {
+            return (
+              <Col xs={12} md={2} key={beneficiary._id} className="mx-5" id="beneficiaries">
+                <Card className="card-body-height">
+                  <Card.Img
+                    className="card-image"
+                    variant="top"
+                    src={beneficiary.image}
+                  />
+                  <Card.Body className="card-body-text">
+                    <Card.Title>{beneficiary.name}</Card.Title>
+                    <br />
+                    <Card.Subtitle><span className="text-muted">Category:</span> {beneficiary.category}</Card.Subtitle>
+                    <br />
+                    <Card.Text>
+                      <h6>{beneficiary.description}</h6>
+                    </Card.Text>
+                    <Card.Text>
+                      <h6><span className="text-muted">Institution Name:</span> {beneficiary.institution.name}</h6>
+                    </Card.Text>
+                    <Card.Text>
+                      <p><span className="text-muted">Email: </span> {beneficiary.email}</p>
+                    </Card.Text>
+                    <Card.Text>
+                      <p><span className="text-muted">Phone Number: </span>{beneficiary.number}</p>
+                    </Card.Text>
+                    <Card.Text>
+                      <p><span className="text-muted">Location: </span>{beneficiary.address}</p>
+                    </Card.Text>
+                    <Card.Text>
+                      <p>{beneficiary.paymentOptions}</p>
+                    </Card.Text>
 
-</Card>
-<Button variant="primary" className="mt-3" style={{ width: '18rem' }} onClick={onRohingyaHandler}>See Profile</Button>
-<Button variant="warning" className="mt-3 mb-3" style={{ width: '18rem' }} onClick={onBeneficiaryHandler}>Edit Beneficiary</Button>
-</Col>
+                    {/*{institutions.map((institution) => {
+                      return ( 
 
-
-
-          <Col xs={12} md={4}>
-<Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
-  <Card.Body>
-    <Card.Title>Person 2</Card.Title>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
- 
-  </Card.Body>
-
-</Card>
-<Button variant="primary" className="mt-3" style={{ width: '18rem' }} >See Profile</Button>
-<Button variant="warning" className="mt-3 mb-3" style={{ width: '18rem' }} onClick={onBeneficiaryHandler}>Edit Beneficiary</Button>
-</Col>
-
-<Col xs={12} md={4}>
-<Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
-  <Card.Body>
-    <Card.Title>Person 3</Card.Title>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
- 
-  </Card.Body>
-
-</Card>
-<Button variant="primary" className="mt-3" style={{ width: '18rem' }} >See Profile</Button>
-<Button variant="warning" className="mt-3 mb-3" style={{ width: '18rem' }} onClick={onBeneficiaryHandler}>Edit Beneficiary</Button>
-</Col>
-
-
-<Col xs={12} md={4}>
-<Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
-  <Card.Body>
-    <Card.Title>Person 3</Card.Title>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
- 
-  </Card.Body>
-
-</Card>
-<Button variant="primary" className="mt-3" style={{ width: '18rem' }} >See Profile</Button>
-<Button variant="warning" className="mt-3 mb-3" style={{ width: '18rem' }} onClick={onBeneficiaryHandler}>Edit Beneficiary</Button>
-</Col>
-
-
-<Col xs={12} md={4}>
-<Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
-  <Card.Body>
-    <Card.Title>Person 4</Card.Title>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
- 
-  </Card.Body>
-
-</Card>
-<Button variant="primary" className="mt-3" style={{ width: '18rem' }}>See Profile</Button>
-<Button variant="warning" className="mt-3 mb-3" style={{ width: '18rem' }} onClick={onBeneficiaryHandler}>Edit Beneficiary</Button>
-</Col>
-
-
-
-          <Col xs={12} md={4}>
-<Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
-  <Card.Body>
-    <Card.Title>Person 5</Card.Title>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
- 
-  </Card.Body>
-
-</Card>
-<Button variant="primary" className="mt-3" style={{ width: '18rem' }} >See Profile</Button>
-<Button variant="warning" className="mt-3 mb-3" style={{ width: '18rem' }} onClick={onBeneficiaryHandler}>Edit Beneficiary</Button>
-</Col>
-
-<Col xs={12} md={4}>
-<Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
-  <Card.Body>
-    <Card.Title>Person 6</Card.Title>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
- 
-  </Card.Body>
-
-</Card>
-<Button variant="primary" className="mt-3" style={{ width: '18rem' }} >See Profile</Button>
-<Button variant="warning" className="mt-3 mb-3" style={{ width: '18rem' }} onClick={onBeneficiaryHandler}>Edit Beneficiary</Button>
-</Col>
-
-
-<Col xs={12} md={4}>
-<Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
-  <Card.Body>
-    <Card.Title>Person 7</Card.Title>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
- 
-  </Card.Body>
-
-</Card>
-<Button variant="primary" className="mt-3" style={{ width: '18rem' }} >See Profile</Button>
-<Button variant="warning" className="mt-3 mb-3" style={{ width: '18rem' }} onClick={onBeneficiaryHandler}>Edit Beneficiary</Button>
-</Col>
-
-<Col xs={12} md={4}>
-<Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src="https://images.unsplash.com/photo-1617450365226-9bf28c04e130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNoYXJpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
-  <Card.Body>
-    <Card.Title>Person 8</Card.Title>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
- 
-  </Card.Body>
-
-</Card>
-<Button variant="primary" className="mt-3" style={{ width: '18rem' }} >See Profile</Button>
-<Button variant="warning" className="mt-3 mb-3" style={{ width: '18rem' }} onClick={onBeneficiaryHandler}>Edit Beneficiary</Button>
-</Col>
+                        <Card.Text>Institution description:{institution.description}</Card.Text>
+                      )
+                    })},*/}
+                  </Card.Body>
+                </Card>
+                <Button
+                  className="mt-3 mb-3 beneficiary-card-buttons"
+                  onClick={() => {
+                    navigate(
+                      `/edit-beneficiary?beneficiary=${beneficiary._id}`
+                    );
+                  }}
+                >
+                  Edit Beneficiary
+                </Button>
+              </Col>
+            );
+          })}
         </Row>
       </Container>
-      <hr/>
+      <hr />
     </>
   );
 };

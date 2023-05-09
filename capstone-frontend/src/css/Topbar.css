@@ -30,7 +30,8 @@
   border: 1px solid white;
   padding: 1rem;
   padding-inline: 2rem;
-  color: white
+  color: white;
+  background-color: #124a9e
 }
 
 .topbar-logo:hover{
@@ -46,7 +47,7 @@
 .topbar-text:hover,
 .topbar-text:active{
   text-decoration: none !important;
-  color: white  !important;;
+  color: white  !important;
 }
 
 .topbar-lower-buttons{
@@ -63,4 +64,9 @@
 
 .topbar-policy{
   color: white;
+}
+
+#dropdown-appeals{
+  background-color: rgb(40, 38, 56);
+ color: white;
 }

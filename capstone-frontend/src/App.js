@@ -22,6 +22,10 @@ import PaymentSuccess from "./components/PaymentSuccess";
 //import { Toaster } from 'react-hot-toast';
 import "./css/App.css";
 import UserLanding from "./components/UserLanding";
+import ResetPassword from "./pages/ResetPassword";
+import AddBeneficiary from "./pages/AddBeneficiary";
+import Sidebar from "./components/Sidebar";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -88,6 +92,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/ilogin" element={<InstitutionsLogin />} />
         <Route path="/iregister" element={<InstitutionsRegister />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/country/:name" element={<Country />} />
         <Route path="/cards" element={<Cards />} />
         <Route path="/beneficiaries" element={<Beneficiaries />} />
@@ -95,9 +100,11 @@ function App() {
           path="/institutionbeneficiaries"
           element={<InstitutionBeneficiaries />}
         />
-        <Route path="/editbeneficiary" element={<EditBeneficiary />} />
+        <Route path="/edit-beneficiary" element={<EditBeneficiary />} />
+        <Route path="/add-beneficiary" element={<AddBeneficiary />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/payment-success" element={<PaymentSuccess />} />
+        <Route path="/user-logged-in" element={<Sidebar />} />
       </Routes>
       <Cards />
    

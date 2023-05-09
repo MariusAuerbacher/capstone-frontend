@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import "../css/Map.css"
 import { Col, Container, Row } from "react-bootstrap";
@@ -22,7 +22,7 @@ const Map = () => {
       attribution='&copy; <a href="https://stadiamaps.com/%22%3EStadia Maps</a>, &copy; <a href="https://openmaptiles.org/%22%3EOpenMapTiles</a> &copy; <a href="https://openstreetmap.org%22%3Eopenstreetmap/</a> contributors'
       url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/%7Bz%7D/%7Bx%7D/%7By%7D%7Br%7D.png"
     />
-    {/* TODO: Add markers */}
+    TODO: Add markers 
   </MapContainer>
   </Col>
   </Row>
@@ -32,4 +32,4 @@ const Map = () => {
   );
 };
 
-export default Map;
+export default Map;*/

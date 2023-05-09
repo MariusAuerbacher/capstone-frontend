@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import "../css/Cards.css";
+import "../css/Beneficiaries.css";
 import axios from "axios";
 
 const Beneficiaries = () => {
@@ -62,7 +62,7 @@ const Beneficiaries = () => {
         <Row>
           {filteredBeneficiaries.map((beneficiary) => {
             return (
-              <Col xs={12} md={4} key={beneficiary._id} className="mx-5">
+              <Col xs={12} md={2} key={beneficiary._id} className="mx-5" id="beneficiaries">
                 <Card className="card-body-height">
                   <Card.Img
                     className="card-image"
@@ -72,22 +72,22 @@ const Beneficiaries = () => {
                   <Card.Body className="card-body-text">
                     <Card.Title>{beneficiary.name}</Card.Title>
                     <br />
-                    <Card.Subtitle>{beneficiary.category}</Card.Subtitle>
+                    <Card.Subtitle><span className="text-muted">Category:</span> {beneficiary.category}</Card.Subtitle>
                     <br />
                     <Card.Text>
                       <h6>{beneficiary.description}</h6>
                     </Card.Text>
                     <Card.Text>
-                      <h6>{beneficiary.institution.name}</h6>
+                      <h6><span className="text-muted">Institution Name:</span> {beneficiary.institution.name}</h6>
                     </Card.Text>
                     <Card.Text>
-                      <p>{beneficiary.email}</p>
+                      <p><span className="text-muted">Email: </span> {beneficiary.email}</p>
                     </Card.Text>
                     <Card.Text>
-                      <p>{beneficiary.number}</p>
+                      <p><span className="text-muted">Phone Number: </span>{beneficiary.number}</p>
                     </Card.Text>
                     <Card.Text>
-                      <p>{beneficiary.address}</p>
+                      <p><span className="text-muted">Location: </span>{beneficiary.address}</p>
                     </Card.Text>
                     <Card.Text>
                       <p>{beneficiary.paymentOptions}</p>

@@ -12,6 +12,7 @@ import "../css/Login.css"
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState("");
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -21,6 +22,7 @@ const Login = () => {
       const res = await axios.post("/users/login", {
         email,
         password,
+        remember
       });
       localStorage.setItem("token", res.data.token)
       dispatch({
@@ -31,7 +33,7 @@ const Login = () => {
         type: SET_ROLE,
         payload: res.data.role
       })
-      navigate("/cards")
+      navigate("/user-logged-in")
     } catch (error) {
       console.log(error.response.data.message);
     }
@@ -73,10 +75,13 @@ const Login = () => {
               <input
                 name="terms"
                 type="checkbox"
-                value="value"
+                value={remember}
                 id="terms"
                 className="tml-checkbox mx-2"
                 aria-label="Text input with checkbox"
+                onChange={(e) => {
+                  setRemember(e.target.value);
+                }}
               >
               </input>
 
@@ -97,7 +102,7 @@ const Login = () => {
               
               <Link className="text-decoration-none login-link d-block mb-2" to="/register">Register</Link>
               <Link className="text-decoration-none login-link d-block mb-2" to="/ilogin">Login as an Institution</Link>
-              <Link className="text-decoration-none login-link d-block mb-2" to="/login">Forgot your password?</Link>
+              <Link className="text-decoration-none login-link d-block mb-2" to="/reset-password">Forgot your password?</Link>
          
           </div>
 

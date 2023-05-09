@@ -29,11 +29,12 @@
 .card-body-height{
   background-color: transparent;
   height: 45rem;
+  width: 18rem;
 }
 
 .beneficiary-card-buttons{
   background-color: #124a9e;
-  width: 26rem;
+  width: 18rem;
 }
 
 .cards-form{

@@ -59,7 +59,7 @@ const Country = () => {
   <Card.Body>
     <Card.Title>Baiturrahman Grand Mosque</Card.Title>
     <Card.Text>
-      Aceh Indonesia
+      Lahore, Pakistan
     </Card.Text>
  
   </Card.Body>

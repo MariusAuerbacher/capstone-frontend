@@ -2,23 +2,24 @@ import React, { useState } from "react";
 import {
   Navbar,
   Nav,
-  Button,
   NavDropdown,
-  Form,
+ /* Button,
+  NavDropdown,
+  Form,*/
 
 } from "react-bootstrap";
 import "../css/Topbar.css"
 import { useDispatch } from "react-redux";
 import { SET_ROLE, SET_USER } from "../redux/actions/index.js";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+//import axios from "axios";
 
 
 
 
 const Topbar = () => {
-const [amount, setAmount] = useState("")
-const[category, setCategory] = useState("")
+//const [amount, setAmount] = useState("")
+//const[category, setCategory] = useState("")
 const navigate = useNavigate();
 const dispatch = useDispatch()
 const logoutHandler= () => {
@@ -33,29 +34,40 @@ const logoutHandler= () => {
   })
   navigate("/")
 }
-
-const donationHandler = async() => {
+const onUmmatiHandler = () => {
+  navigate("/");
+  
+};
+/*const donationHandler = async() => {
   const res = await axios.get("/beneficiaries/");
   console.log(res.data);
   const result =  res.data.filter((beneficiary)=>{
     if(beneficiary.category.toLowerCase().includes(category.toLowerCase())) return true
-  })
-  
-}
+  })*/
   return (
     <>
 
  
      
       <div>
-      <Navbar id="topbar" variant="light" className="d-flex whole-brand" sticky="top" >
-        <Nav.Link to="/" className="topbar-logo">Ummati</Nav.Link>
+      <Navbar id="topbar"  className="d-flex whole-brand" sticky="top" >
+        <button onClick={onUmmatiHandler} className="topbar-logo">Ummati</button>
         <Nav className="justify-content-between mr-auto">
-          <Nav.Link to="/features" className="topbar-text text-decoration-none">Appeals</Nav.Link>
-          <Nav.Link href="#cards" className="topbar-text text-decoration-none">Projects</Nav.Link>
-          <Nav.Link href="#ramadan" className="topbar-text text-decoration-none">Ramadan</Nav.Link>
-          <Nav.Link href="#involve" className="topbar-text">Get Involved</Nav.Link>
-          <Nav.Link href="#about" className="topbar-text">About</Nav.Link>
+        <NavDropdown id="dropdown-appeals" title="Projects" className="text-decoration-none topbar-dropdown-appeals">
+        <NavDropdown.Item href="#action/3.1">Zakat</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.2">Ramadan</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.3">Sadaqah Jariyah</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.3">Orphans</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.3">Widows</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.3">Crisis and Emergencies</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.3">Agriculture and Wells</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.3">Sponsor a Talib ul Ilm</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.3">Al Muhajireen wal-Ansar</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.3">Business Partnership</NavDropdown.Item>
+          </NavDropdown>
+          <Nav.Link href="/beneficiaries" className="topbar-text text-decoration-none">Appeals</Nav.Link>
+          <Nav.Link href="#cards" className="topbar-text">Get Involved</Nav.Link>
+          <Nav.Link href="#vision" className="topbar-text">About</Nav.Link>
           <Nav.Link href="#footer" className="topbar-text">Contact</Nav.Link>
         </Nav>
   
@@ -72,7 +84,7 @@ const donationHandler = async() => {
       
 </div>
 
-<Navbar  variant="dark" className="d-flex justify-content-center topbar-colour" sticky="top">
+{/*<Navbar  variant="dark" className="d-flex justify-content-center topbar-colour" sticky="top">
       <Nav>
       <Navbar.Brand  className="mx-3">Make a</Navbar.Brand>
       <NavDropdown title="One Time" id="basic-nav-dropdown" className="top-outline">
@@ -92,7 +104,7 @@ const donationHandler = async() => {
         <NavDropdown.Item href="#action/3.4">Own Amount</NavDropdown.Item>
   </NavDropdown>*/}
 
-        <Form.Select value={amount} onChange={(e)=>{setAmount(e.target.value)}}>
+      {/*  <Form.Select value={amount} onChange={(e)=>{setAmount(e.target.value)}}>
           <option value="10">$10</option>
           <option value="20">$20</option>
           <option value="30">$30</option>
@@ -108,7 +120,7 @@ const donationHandler = async() => {
         <NavDropdown.Divider />
         <NavDropdown.Item href="#action/3.4">Choose another Category</NavDropdown.Item>
 </NavDropdown>*/}
-  <Form.Select value={category} onChange={(e)=>{setCategory(e.target.value)}}>
+  {/*<Form.Select value={category} onChange={(e)=>{setCategory(e.target.value)}}>
           <option >Medical</option>
           <option >Orphan</option>
           <option >Natural Disaster</option>
@@ -116,12 +128,13 @@ const donationHandler = async() => {
         </Form.Select>
     </Nav>
     <div className="mx-5">
-<Button variant="outline-light" size="lg" className="ml-4 px-4" onClick={donationHandler}>
+<Button variant="outline-light" size="lg" className="ml-4 px-4" /*onClick={donationHandler}*//*>
          Donate
           </Button>
   <span className="px-4 ml-5 topbar-policy">100% Donation Policy</span>
   </div>
       </Navbar>
+    */}
     </>
   );
 };

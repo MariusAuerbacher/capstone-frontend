@@ -4,6 +4,16 @@ import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
 //import { useDispatch } from "react-redux";
 import "../css/EditBeneficiaries.css";
 
+
+const paymentOptionsArray = [
+  "Visa/Credit Card",
+  "Cryptocurrency",
+  "Hawala Banking",
+  "Mobile Money",
+  "Remitly/Dahabshil/Western Union/Money Transfer",
+  "Cash",
+];
+
 const EditBeneficiary = () => {
   const [beneficiary, setBeneficiary] = useState({
     name: "",
@@ -12,7 +22,7 @@ const EditBeneficiary = () => {
     description: "",
     number: "",
     address: "",
-    paymentOptions: "",
+    paymentOptions: [],
     image: "",
     password: "",
   });
@@ -24,7 +34,7 @@ const EditBeneficiary = () => {
     e.preventDefault();
     const beneficiaryCopy = { ...beneficiary };
     beneficiaryCopy.number = +beneficiaryCopy.number;
-    beneficiaryCopy.paymentOptions = beneficiaryCopy.paymentOptions.split(",");
+    //beneficiaryCopy.paymentOptions = beneficiaryCopy.paymentOptions.split(",");
     console.log(beneficiaryCopy);
     const res = await axios.post("/beneficiaries/register", beneficiaryCopy, {
       headers: {
@@ -156,81 +166,29 @@ const EditBeneficiary = () => {
                     />
                   </Form.Group>
 
-                  <Form.Label className="mb-3">Ways of Receiving Funds</Form.Label>
-              <Form.Group controlId="formBasicCheckbox mb-3">
-                <Form.Check
-                  className="mb-3"
-                  type="checkbox"
-                  label="Visa/Credit Card"
-                  value={beneficiary.paymentOptions}
-                  onChange={(e) => 
-                    setBeneficiary({
-                      ...beneficiary,
-                      paymentOptions: e.target.value,
-                    })
-                  }
-                />
-                <Form.Check
-                  className="mb-3"
-                  type="checkbox"
-                  label="Cryptocurrency"
-                  value={beneficiary.paymentOptions}
-                  onChange={(e) => 
-                    setBeneficiary({
-                      ...beneficiary,
-                      paymentOptions: e.target.value,
-                    })
-                  }
-                />
-                <Form.Check
-                  className="mb-3"
-                  type="checkbox"
-                  label="Hawala Banking"
-                  value={beneficiary.paymentOptions}
-                  onChange={(e) => 
-                    setBeneficiary({
-                      ...beneficiary,
-                      paymentOptions: e.target.value,
-                    })
-                  }
-                />
-                <Form.Check
-                  className="mb-3"
-                  type="checkbox"
-                  label="Mobile Money"
-                  value={beneficiary.paymentOptions}
-                  onChange={(e) => 
-                    setBeneficiary({
-                      ...beneficiary,
-                      paymentOptions: e.target.value,
-                    })
-                  }
-                />
-                <Form.Check
-                  className="mb-3"
-                  type="checkbox"
-                  label="Remitly /Dahabshil/ Western Union/ Money Transfers"
-                  value={beneficiary.paymentOptions}
-                  onChange={(e) => 
-                    setBeneficiary({
-                      ...beneficiary,
-                      paymentOptions: e.target.value,
-                    })
-                  }
-                />
-                <Form.Check
-                  className="mb-5"
-                  type="checkbox"
-                  label="Cash"
-                  value={beneficiary.paymentOptions}
-                  onChange={(e) => 
-                    setBeneficiary({
-                      ...beneficiary,
-                      paymentOptions: e.target.value,
-                    })
-                  }
-                />
-              </Form.Group>
+                  <Form.Group>
+                  {paymentOptionsArray.map((option) => {
+                    return (
+                      <Form.Check
+                        className="mb-3"
+                        type="checkbox"
+                        label={option}
+                        onChange={(e) => {
+                          const paymentOptions = [...beneficiary.paymentOptions]
+                          if(e.target.checked === true) {
+                            paymentOptions.push(option)
+                          } else {
+                            paymentOptions = paymentOptions.filter((op)=> op !== option)
+                          }
+                          setBeneficiary({
+                            ...beneficiary,
+                            paymentOptions,
+                          });
+                        }}
+                      />
+                    );
+                  })}
+                </Form.Group>
 
                   <Form.Group controlId="image">
                     <Form.Label>Image</Form.Label>
@@ -268,7 +226,7 @@ const EditBeneficiary = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control
                       value={beneficiary.password}
-                      type="text"
+                      type="password"
                       placeholder="Beneficiary Login Password"
                       onChange={(e) =>
                         setBeneficiary({

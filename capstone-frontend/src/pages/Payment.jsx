@@ -1,10 +1,11 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Form, FormControl, Row } from "react-bootstrap";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "../components/CheckoutForm";
 import "../css/Payment.css"
+import { useSearchParams } from "react-router-dom";
 
 
 const stripePromise = loadStripe(
@@ -15,13 +16,17 @@ const Payment = () => {
   const [price, setPrice] = useState("");
   const [funds, setFunds] = useState("")
   const [clientSecret, setClientSecret] = useState(null);
+  const [searchParams] = useSearchParams()
   const getClientSecret = async (e) => {
     e.preventDefault();
     const res = await axios.post("/payments/payment-intent", { price: +price });
     console.log(res.data);
     setClientSecret(res.data.clientSecret);
   };
-
+useEffect(()=>{
+  const amount = searchParams.get("amount")
+  setPrice(amount)
+}, [searchParams.get("amount")])
   return (
     <>
     <Container id="#login" className="d-flex justify-content-center my-5 login-container">
@@ -52,10 +57,16 @@ const Payment = () => {
                   className="mb-3"
                   type="checkbox"
                   label="Yes, donate 1$ to run this website"
-                  /*value={funds}
                   onChange={(e) => {
-                    setFunds(e.target.value);
-                  }}*/
+
+                    console.log(e.target.checked)
+                    if(e.target.checked === true){
+                      setPrice((Number(price) + 1).toString())
+                    } else {
+                      setPrice((Number(price) - 1).toString())
+                    }
+
+                  }}
                 />
                 </Form.Group>
    

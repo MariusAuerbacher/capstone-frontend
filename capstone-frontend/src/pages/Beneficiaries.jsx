@@ -48,7 +48,7 @@ const Beneficiaries = () => {
   return (
     <>
       <form  className="d-flex justify-content-end cards-form mt-2" onSubmit={searchHandler}>
-        <input type="text" name="name" placeholder="Search" value={searchText} onChange={(e)=>{setSearchText(e.target.value)}}/>
+        <input type="text" name="name" placeholder="Search by Category" value={searchText} onChange={(e)=>{setSearchText(e.target.value)}}/>
         <button type="submit">Search</button>
       </form>
 

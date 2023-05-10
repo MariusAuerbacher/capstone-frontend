@@ -64,7 +64,7 @@ const Cards = () => {
     country: "Somalia"
 }, {
   id: 7,
-    country: "India"
+    country: "Pakistan"
 }, {
   id: 8,
     country: "Palestine"
@@ -85,7 +85,7 @@ const Cards = () => {
   return (
     <>
    <form id="cards" className="d-flex justify-content-end cards-form mt-5" onSubmit={searchHandler} >
-<input type="text" name="name" placeholder="Search" value={searchText} onChange={(e)=>{setSearchText(e.target.value.toLowerCase())}}/>
+<input type="text" name="name" placeholder="Search by Country" value={searchText} onChange={(e)=>{setSearchText(e.target.value.toLowerCase())}}/>
 <input type="submit" value="Search" />
 </form>
 
@@ -246,9 +246,9 @@ const Cards = () => {
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj8UfFH64khvpFHdqBG1caAUYSiN4BhM6Hlg&usqp=CAU"
               />
               <Card.Body className="card-body-text">
-                <Card.Title>India</Card.Title>
+                <Card.Title>Pakistan</Card.Title>
                 <Card.Text>
-                 Help those persecuted and internally displaced in Kashmir and now all over India.
+                 Help those affected by floods, earthquakes and an economic crises in Pakistan.
                 </Card.Text>
               </Card.Body>
             </Card>

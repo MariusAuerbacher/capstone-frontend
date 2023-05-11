@@ -15,23 +15,15 @@ const ResetPassword = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const loginHandler = async (e) => {
+  const resetPasswordHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/users/login", {
+      const res = await axios.post("/users/password-reset", {
         email,
-        password,
-      });
-      localStorage.setItem("token", res.data.token)
-      dispatch({
-        type: SET_USER,
-        payload: res.data.user
-      })
-      dispatch({
-        type: SET_ROLE,
-        payload: res.data.role
-      })
-      navigate("/cards")
+      
+      }) 
+      console.log(res.data)
+      navigate("/login")
     } catch (error) {
       console.log(error.response.data.message);
     }
@@ -43,7 +35,7 @@ const ResetPassword = () => {
           <Col xs={12} md={12}>
             <h2 className="mb-4">Enter your email</h2>
             <p className="mb-4">We will send you a new password</p>
-            <Form onSubmit={loginHandler}>
+            <Form onSubmit={resetPasswordHandler}>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
                 <Form.Control

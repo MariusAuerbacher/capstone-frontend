@@ -3,11 +3,50 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../css/Cards.css";
 import axios from "axios";
+const countries = [{
+  id: 1,
+  name: "Rohingya"
+}, {
+  id: 2,
+  name: "Uyghurs"
+}, {
+  id: 3,
+  name: "Afghanistan"
+}, {
+  id: 4,
+  name:"Yemen"
+}, {
+  id: 5,
+  name:"Syria"
+}, {
+  id: 6,
+  name: "Somalia"
+}, {
+id: 7,
+  name: "Pakistan"
+}, {
+id: 8,
+  name: "Palestine"
+}, {
+id: 9,
+  name: "Mali"
+}, {
+id: 10,
+  name: "Central African Republic"
+},{
+id: 10,
+name: "Mozambique"
+},{
+id: 10,
+name: "Sudan"
+}]
 
 
 const Cards = () => {
   const [beneficiaries, setBeneficiaries] = useState([]);
   const [filteredBeneficiaries, setFilteredBeneficiaries] = useState([])
+  const [filteredCountries, setFilteredCountries] = useState(countries)
+ 
   const [searchText, setSearchText] =useState("")
   const navigate = useNavigate();
   const onRohingyaHandler = () => {
@@ -22,14 +61,14 @@ const Cards = () => {
   };
   const searchHandler = (e) => {
     e.preventDefault()
-   const result =  beneficiaries.filter((country)=>{
-      if(country.country.toLowerCase().includes(searchText.toLowerCase())) return true
+   const result =  countries.filter((country)=>{
+      if(country.name.toLowerCase().includes(searchText)) return true
     })
-    setFilteredBeneficiaries(result)
+    setFilteredCountries(result)
   }
 
   const getUrgentBeneficiaries = (e) => {
-    const result =  beneficiaries.filter((beneficiary)=>{
+    const result =  filteredBeneficiaries.filter((beneficiary)=>{
       if(beneficiary.category.toLowerCase().includes("urgent")) return true
     })
     setFilteredBeneficiaries(result)
@@ -44,44 +83,7 @@ const Cards = () => {
 
   
 
-  /*const searchCountriesArray = [{
-    id: 1,
-    country: "Rohingya"
-}, {
-    id: 2,
-    country: "Uyghurs"
-}, {
-    id: 3,
-    country: "Afghanistan"
-}, {
-    id: 4,
-    country:"Yemen"
-}, {
-    id: 5,
-    country:"Syria"
-}, {
-    id: 6,
-    country: "Somalia"
-}, {
-  id: 7,
-    country: "Pakistan"
-}, {
-  id: 8,
-    country: "Palestine"
-}, {
-  id: 9,
-    country: "Mali"
-}, {
-  id: 10,
-    country: "Central African Republic"
-},{
-  id: 10,
-  country: "Mozambique"
-},{
-  id: 10,
-  country: "Sudan"
-}] */
-
+ 
   return (
     <>
    <form id="cards" className="d-flex justify-content-end cards-form mt-5" onSubmit={searchHandler} >
@@ -98,7 +100,33 @@ const Cards = () => {
      
       <Container >
           <Row>
-          <Col xs={12} md={4}>
+            {filteredCountries.map((country)=>{
+              return (
+                <Col xs={12} md={4}>
+            <Card style={{ width: "18rem" }} className="card-body-colour">
+              <Card.Img
+              className="card-images"
+                variant="top"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1BFcopM-38s70GCW8XF2rovZjJyuFnW0mqg&usqp=CAU"
+              />
+              <Card.Body  className="card-body-text">
+                <Card.Title>{country.name}</Card.Title>
+                <Card.Text>
+                  One of the most persecuted minorities in the world. The Rohingya are stateless and facing a genocide in Myanmar.
+                </Card.Text>
+              </Card.Body>
+            </Card>
+            <Button
+              className="mb-5 mt-1 card-buttons"
+              style={{ width: "18rem" }}
+              onClick={onRohingyaHandler}
+            >
+              Help now
+            </Button>
+          </Col>
+              )
+            })}
+           {/* <Col xs={12} md={4}>
             <Card style={{ width: "18rem" }} className="card-body-colour">
               <Card.Img
               className="card-images"
@@ -378,7 +406,7 @@ const Cards = () => {
             </Button>
           </Col>
 
-          {/*<Col xs={12} md={4}>
+          <Col xs={12} md={4}>
             <Card style={{ width: "18rem" }} className="card-body-colour">
               <Card.Img
                 className="card-images"
@@ -449,6 +477,7 @@ const Cards = () => {
               Help now
             </Button>
   </Col>*/}
+
         </Row>
       </Container>
     </>

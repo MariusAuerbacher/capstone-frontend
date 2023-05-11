@@ -36,7 +36,7 @@ const EditBeneficiary = () => {
     beneficiaryCopy.number = +beneficiaryCopy.number;
     //beneficiaryCopy.paymentOptions = beneficiaryCopy.paymentOptions.split(",");
     console.log(beneficiaryCopy);
-    const res = await axios.post("/beneficiaries/register", beneficiaryCopy, {
+    const res = await axios.put("/beneficiaries/:beneficiaryId", beneficiaryCopy, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },

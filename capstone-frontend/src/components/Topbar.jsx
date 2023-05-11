@@ -118,7 +118,7 @@ const Topbar = () => {
       >
         <Nav>
  
-         <p className="topbar-text mx-3 second-topbar-text mt-2">Make a donation of</p> <select
+         <p className="topbar-text mx-3 second-topbar-text mt-3">Make a donation of</p> <select
          className="topbar-dropdown px-2"
             value={amount}
             onChange={(e) => {
@@ -132,7 +132,7 @@ const Topbar = () => {
             <option  className="topbar-dropdown-items" value="50">$50</option>
           </select>
 
-            <p className="topbar-text mx-2 second-topbar-text mt-2">to</p>
+            <p className="topbar-text mx-3 second-topbar-text mt-3">to</p>
          <select
           className="topbar-dropdown text-center px-2"
             value={category}
@@ -156,7 +156,7 @@ const Topbar = () => {
           >
             Donate
           </Button>
-          <span className="px-4 ml-5 topbar-policy">100% Donation Policy</span>
+          <span className="px-4 ml-5 mt-4 topbar-policy">100% Donation Policy</span>
         </div>
       </Navbar>
     </>

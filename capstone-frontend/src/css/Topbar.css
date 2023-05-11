@@ -73,6 +73,7 @@
 
 .second-topbar-text{
   font-weight: bold;
+  font-size: large;
 }
 
 .topbar-dropdown{
@@ -81,5 +82,7 @@
   border:2px solid white
 }
 .topbar-dropdown-items{
-  color: black
+  color: black;
+  z-index: 5;
+  position: relative;
 }

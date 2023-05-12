@@ -12,7 +12,7 @@ import "../css/Login.css"
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [remember, setRemember] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -22,7 +22,7 @@ const Login = () => {
       const res = await axios.post("/users/login", {
         email,
         password,
-        remember
+        rememberMe
       });
       localStorage.setItem("token", res.data.token)
       dispatch({
@@ -75,12 +75,12 @@ const Login = () => {
               <input
                 name="terms"
                 type="checkbox"
-                value={remember}
+                value={rememberMe}
                 id="terms"
                 className="tml-checkbox mx-2"
                 aria-label="Text input with checkbox"
                 onChange={(e) => {
-                  setRemember(e.target.value);
+                  setRememberMe(!rememberMe);
                 }}
               >
               </input>

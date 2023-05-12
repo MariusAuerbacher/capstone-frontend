@@ -47,12 +47,12 @@ const Beneficiaries = () => {
 
   return (
     <>
-      <form  className="d-flex justify-content-end cards-form mt-2" onSubmit={searchHandler}>
+      <form  className="d-flex justify-content-end cards-form mt-5" onSubmit={searchHandler}>
         <input type="text" name="name" placeholder="Search by Category" value={searchText} onChange={(e)=>{setSearchText(e.target.value)}}/>
-        <button type="submit">Search</button>
+        <button type="submit" className="card-search-button">Search</button>
       </form>
 
-      <div className="d-flex justify-content-end button-urgent-appeals mt-2 cards-form">
+      <div className="d-flex justify-content-end button-urgent-appeals mt-2 mb-3 cards-form">
         <Button variant="danger" style={{ width: "16rem" }} onClick={getUrgentBeneficiaries}>
           Urgent Appeals
         </Button>

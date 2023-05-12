@@ -18,3 +18,11 @@
 .sr-only{
     display: none;
 }
+
+.carousel-large-text{
+  font-size: 10rem;
+
+}
+.carousel-interval{
+  interval: 40000,
+}

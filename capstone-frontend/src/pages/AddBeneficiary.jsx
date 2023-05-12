@@ -14,6 +14,7 @@ const paymentOptionsArray = [
 ];
 
 const AddBeneficiary = () => {
+  const [file, setFile] = useState(null)
   const [beneficiary, setBeneficiary] = useState({
     name: "",
     email: "",
@@ -31,8 +32,14 @@ const AddBeneficiary = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    const form = new FormData();
+    form.append("file", file)
+    form.append("upload_preset", "ummati")
+    const cloudinaryRes = await axios.post("https://api.cloudinary.com/v1_1/dj7y6okm8/upload", form)
+    console.log(cloudinaryRes.data)
     const beneficiaryCopy = { ...beneficiary };
     beneficiaryCopy.number = +beneficiaryCopy.number;
+    beneficiaryCopy.image = cloudinaryRes.data.secure_url
     //beneficiaryCopy.paymentOptions = beneficiaryCopy.paymentOptions.split(",");
     console.log(beneficiaryCopy);
     const res = await axios.post("/beneficiaries/register", beneficiaryCopy, {
@@ -42,6 +49,9 @@ const AddBeneficiary = () => {
     });
     console.log(res.data);
   };
+
+
+
   /*const addImageHandler = (e) => {
     e.preventDefault();
     setImage(e.target.files[0]);
@@ -182,33 +192,25 @@ const AddBeneficiary = () => {
                 <Form.Group controlId="image">
                   <Form.Label>Image</Form.Label>
                   <Form.Control
+                    id="image"
                     className="mb-4"
-                    value={beneficiary.image}
-                    type="text"
-                    placeholder="Image of Beneficiary"
-                    onChange={(e) =>
-                      setBeneficiary({
-                        ...beneficiary,
-                        image: e.target.value,
-                      })
+                    //value={beneficiary.image}
+                    type="file"
+                    //placeholder="Image of Beneficiary"
+                    onChange={(e) =>{
+                      setFile(e.target.files[0])
+                    }
+                      
                     }
                   />
-                  <Button
+                  <label
                     className="btn btn-primary btn-block btn-xl login-button mb-4"
                     variant="primary"
                     type="button"
-                    onClick={(e) => {
-                      /*e.preventDefault();
-                handleClose()
-                const formData = new FormData();
-                formData.append("image", image);
-                dispatch(
-                 //postImageExperienceAsync(formData, beneficiary, beneficiary._id)
-                );*/
-                    }}
+                   htmlFor="image"
                   >
-                    Edit picture
-                  </Button>
+                    Add picture
+                  </label>
                 </Form.Group>
 
                 <Form.Group className="mb-5" controlId="password">

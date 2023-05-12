@@ -18,11 +18,13 @@
 
 .card-images{
    border-radius: 0%;
+   height: 15vw;
+   object-fit: cover;
 }
 
 .card-image{
   border-radius: 0%;
-  height: 20rem
+  height: 18rem
 }
 
 
@@ -38,4 +40,9 @@
 
 .cards-form{
   margin-right: 1rem
+}
+
+.card-search-button{
+  background-color: #124a9e;
+  color: white;
 }

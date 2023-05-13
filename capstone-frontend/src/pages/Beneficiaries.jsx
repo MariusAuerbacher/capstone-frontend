@@ -65,7 +65,7 @@ const Beneficiaries = () => {
               <Col xs={12} md={2} key={beneficiary._id} className="mx-5" id="beneficiaries">
                 <Card className="card-body-height">
                   <Card.Img
-                    className="card-image"
+                    className="card-image image-fluid"
                     variant="top"
                     src={beneficiary.image}
                   />

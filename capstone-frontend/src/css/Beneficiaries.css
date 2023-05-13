@@ -18,11 +18,14 @@
 
 .card-images{
    border-radius: 0%;
+  
+
 }
 
 .card-image{
   border-radius: 0%;
-  height: 20rem
+  height: 20rem;
+  object-fit: cover;
 }
 
 

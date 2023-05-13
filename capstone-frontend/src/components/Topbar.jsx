@@ -113,7 +113,7 @@ const Topbar = () => {
 
       <Navbar
         variant="dark"
-        className="d-flex justify-content-center topbar-colour"
+        className="d-flex justify-content-center topbar-colour second-topbar-index"
         sticky="top"
       >
         <Nav>

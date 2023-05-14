@@ -1,4 +1,4 @@
-.full-height-map {
+.leaflet-container {
   height: 50vh;
   width: 80vh;
 }

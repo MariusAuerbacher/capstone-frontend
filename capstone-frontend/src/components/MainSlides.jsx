@@ -3,7 +3,7 @@ import { Carousel } from "react-bootstrap";
 import "../css/MainSlides.css";
 import Vision from "./Vision";
 import { useNavigate } from "react-router-dom";
-//import Map from "./Map"
+import Map from "./Map"
 
 const MainSlides = () => {
   const navigate = useNavigate();
@@ -68,7 +68,7 @@ const MainSlides = () => {
         </Carousel.Item>
       </Carousel>
       <Vision />
-      {/*<Map/>*/}
+      <Map/>
     </>
   );
 };

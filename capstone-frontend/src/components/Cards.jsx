@@ -111,7 +111,15 @@ const Cards = () => {
  
   return (
     <>
-   <form id="cards" className="d-flex justify-content-end cards-form my-5" onSubmit={searchHandler} >
+
+
+
+
+
+
+
+
+   <form id="cards" className="d-flex justify-content-end cards-form mb-5" onSubmit={searchHandler} >
 <input type="text" name="name" placeholder="Search by Country" value={searchText} onChange={(e)=>{setSearchText(e.target.value.toLowerCase())}}/>
 <input type="submit" value="Search" className="card-search-button"/>
 </form>

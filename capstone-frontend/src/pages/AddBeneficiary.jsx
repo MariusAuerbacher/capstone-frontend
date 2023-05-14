@@ -25,6 +25,10 @@ const AddBeneficiary = () => {
     paymentOptions: [],
     image: "",
     password: "",
+    location: {
+      type: "Point",
+      coordinates: []
+    }
   });
   //const [image, setImage] = useState(null);
 
@@ -211,6 +215,45 @@ const AddBeneficiary = () => {
                   >
                     Add picture
                   </label>
+                </Form.Group>
+
+
+                 <Form.Group className="mb-4" controlId="email-name">
+                  <Form.Label>Latitude</Form.Label>
+                  <Form.Control
+                    value={beneficiary.location.coordinates[1]}
+                    type="text"
+                    placeholder="Beneficiary Email (if N/A: your email)"
+                    required
+                    onChange={(e) =>
+                      setBeneficiary({
+                        ...beneficiary,
+                       location: {
+                        ...beneficiary.location,
+                        coordinates: [beneficiary.location.coordinates[0], e.target.value]
+                       }
+                      })
+                    }
+                  />
+                </Form.Group>
+                
+                <Form.Group className="mb-4" controlId="email-name">
+                  <Form.Label>Longitude</Form.Label>
+                  <Form.Control
+                    value={beneficiary.location.coordinates[0]}
+                    type="text"
+                    placeholder="Longitude"
+                    required
+                    onChange={(e) =>
+                      setBeneficiary({
+                        ...beneficiary,
+                        location: {
+                          ...beneficiary.location,
+                          coordinates: [e.target.value, beneficiary.location.coordinates[1]]
+                         }
+                      })
+                    }
+                  />
                 </Form.Group>
 
                 <Form.Group className="mb-5" controlId="password">

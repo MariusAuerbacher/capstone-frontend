@@ -6,6 +6,7 @@ import axios from "axios";
 import icon from "leaflet/dist/images/marker-icon.png";
 import L, { Icon } from "leaflet";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
+import LocationMarker from "./LocationMarker";
 
 let DefaultIcon = new Icon({
   iconUrl: icon,
@@ -14,19 +15,8 @@ let DefaultIcon = new Icon({
 
 //L.Marker.prototype.options.icon = DefaultIcon;
 
-const Map = () => {
-  const [beneficiaries, setBeneficiaries] = useState([]);
 
-  const getBeneficiaries = async () => {
-    const res = await axios.get("/beneficiaries");
-    setBeneficiaries(res.data)
-    console.log(res.data);
-  };
-
-  useEffect(() => {
-    getBeneficiaries();
-  }, []);
-
+const LocationPicker  = (props) => {
   return (
     <>
       <Container
@@ -45,22 +35,7 @@ const Map = () => {
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                   attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 />
-                {beneficiaries.map((beneficiary, index) => {
-                  console.log(beneficiary.location.coordinates);
-                  return beneficiary.location.coordinates.length === 2 ? (
-                    <Marker
-
-                      key={beneficiary._id}
-                      icon={DefaultIcon}
-                      position={[
-                        beneficiary.location.coordinates[1],
-                        beneficiary.location.coordinates[0],
-                      ]}
-                    >
-                      <Popup>{beneficiary.name}</Popup>
-                    </Marker>
-                  ) : null;
-                })}
+                <LocationMarker beneficiary={props.beneficiary} setBeneficiary={props.setBeneficiary}/>
               </MapContainer>
             </div>
           </Col>
@@ -71,4 +46,4 @@ const Map = () => {
   );
 };
 
-export default Map;
+export default LocationPicker;

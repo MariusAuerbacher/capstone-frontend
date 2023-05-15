@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
 //import { useDispatch } from "react-redux";
 import "../css/EditBeneficiaries.css";
+import LocationPicker from "../components/LocationPicker";
 
 const paymentOptionsArray = [
   "Visa/Credit Card",
@@ -218,7 +219,7 @@ const AddBeneficiary = () => {
                 </Form.Group>
 
 
-                 <Form.Group className="mb-4" controlId="email-name">
+                 {/*<Form.Group className="mb-4" controlId="email-name">
                   <Form.Label>Latitude</Form.Label>
                   <Form.Control
                     value={beneficiary.location.coordinates[1]}
@@ -254,7 +255,10 @@ const AddBeneficiary = () => {
                       })
                     }
                   />
-                </Form.Group>
+                  </Form.Group>*/}
+
+
+                  <LocationPicker beneficiary={beneficiary} setBeneficiary={setBeneficiary}/>
 
                 <Form.Group className="mb-5" controlId="password">
                   <Form.Label>Password</Form.Label>

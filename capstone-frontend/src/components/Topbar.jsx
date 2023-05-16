@@ -51,14 +51,14 @@ const Topbar = () => {
               title="Projects"
               className="text-decoration-none topbar-dropdown-appeals"
             >
-              <NavDropdown.Item href="#action/3.1">Zakat</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Ramadan</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">
+              <NavDropdown.Item href="/page-under-construction">Zakat</NavDropdown.Item>
+              <NavDropdown.Item href="/page-under-construction">Ramadan</NavDropdown.Item>
+              <NavDropdown.Item href="/page-under-construction">
                 Sadaqah Jariyah
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Orphans</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Widows</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">
+              <NavDropdown.Item href="/page-under-construction">Orphans</NavDropdown.Item>
+              <NavDropdown.Item href="/page-under-construction">Widows</NavDropdown.Item>
+              <NavDropdown.Item href="/page-under-construction">
                 Crisis and Emergencies
               </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">

@@ -25,6 +25,7 @@ import UserLanding from "./components/UserLanding";
 import ResetPassword from "./pages/ResetPassword";
 import AddBeneficiary from "./pages/AddBeneficiary";
 import Sidebar from "./components/Sidebar";
+import PageUnderConstruction from "./pages/PageUnderConstruction";
 
 
 function App() {
@@ -105,6 +106,7 @@ function App() {
         <Route path="/payment" element={<Payment />} />
         <Route path="/payment-success" element={<PaymentSuccess />} />
         <Route path="/user-logged-in" element={<Sidebar />} />
+        <Route path="/page-under-construction" element={<PageUnderConstruction />} />
       </Routes>
       <Cards />
    

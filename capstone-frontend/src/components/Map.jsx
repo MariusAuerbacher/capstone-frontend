@@ -20,7 +20,6 @@ const Map = () => {
   const getBeneficiaries = async () => {
     const res = await axios.get("/beneficiaries");
     setBeneficiaries(res.data)
-    console.log(res.data);
   };
 
   useEffect(() => {
@@ -37,8 +36,8 @@ const Map = () => {
           <Col xs={12} md={12}>
             <div id="map">
               <MapContainer
-                center={[13.38, 52.51]}
-                zoom={12}
+                center={[ 52.51, 13.38]}
+                zoom={2}
                 scrollWheelZoom={false}
               >
                 <TileLayer
@@ -46,7 +45,7 @@ const Map = () => {
                   attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 />
                 {beneficiaries.map((beneficiary, index) => {
-                  console.log(beneficiary.location.coordinates);
+                 
                   return beneficiary.location.coordinates.length === 2 ? (
                     <Marker
 
@@ -57,7 +56,8 @@ const Map = () => {
                         beneficiary.location.coordinates[0],
                       ]}
                     >
-                      <Popup>{beneficiary.name}</Popup>
+                      <Popup>{beneficiary.name} </Popup>
+                  
                     </Marker>
                   ) : null;
                 })}

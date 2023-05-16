@@ -24,8 +24,8 @@
 
 .card-image{
   border-radius: 0%;
-  height: 20rem;
-  object-fit: cover;
+  height: 17rem;
+  object-fit: fill;
 }
 
 

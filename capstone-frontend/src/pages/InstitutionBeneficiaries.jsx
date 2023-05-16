@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import {useNavigate } from "react-router-dom";
-import "../css/Cards.css"
+import "../css/Beneficiaries.css"
 import axios from "axios";
 import { useSelector } from "react-redux";
 
@@ -25,18 +25,13 @@ const InstitutionBeneficiaries = () => {
 
   const searchHandler = (e) => {
     e.preventDefault()
+   // eslint-disable-next-line array-callback-return
    const result =  beneficiaries.filter((beneficiary)=>{
       if(beneficiary.category.toLowerCase().includes(searchText.toLowerCase())) return true
     })
     setFilteredBeneficiaries(result)
   }
 
-  const getUrgentBeneficiaries = (e) => {
-    const result =  beneficiaries.filter((beneficiary)=>{
-      if(beneficiary.category.toLowerCase().includes("urgent")) return true
-    })
-    setFilteredBeneficiaries(result)
-  }
   /*const getAllInstitutions = async () => {
     const res = await axios.get("/institutions/");
     console.log(res.data);
@@ -60,12 +55,13 @@ const InstitutionBeneficiaries = () => {
   }, [role])
   return (
     <>
-  <form className="d-flex justify-content-end cards-form mt-5">
-    <input type="text" name="name"  placeholder="Search"  />
-  <input type="submit" value="Search"/>
-</form>
 
-<div className="d-flex justify-content-end button-urgent-appeals mt-2 cards-form">
+<form  className="d-flex justify-content-end cards-form mt-5" onSubmit={searchHandler}>
+        <input type="text" name="name" placeholder="Search by Category" value={searchText} onChange={(e)=>{setSearchText(e.target.value)}}/>
+        <button type="submit" className="card-search-button">Search</button>
+      </form>
+
+<div className="d-flex justify-content-end button-urgent-appeals  mt-2 mb-3 cards-form">
 <Button variant="success" style={{ width: '16rem' }} onClick={addNewBeneficiary}>Add Beneficiary</Button>
 
 </div>
@@ -78,7 +74,7 @@ const InstitutionBeneficiaries = () => {
               <Col xs={12} md={2} key={beneficiary._id} className="mx-5" id="beneficiaries">
                 <Card className="card-body-height">
                   <Card.Img
-                    className="card-image"
+                    className="card-image image-fluid"
                     variant="top"
                     src={beneficiary.image}
                   />

@@ -13,7 +13,6 @@ function LocationMarker(props) {
   const [position, setPosition] = useState(null);
   const map = useMapEvents({
     click(e) {
-      console.log([e.latlng.lng, e.latlng.lat]);
       props.setBeneficiary({
         ...props.beneficiary,
         location: {
@@ -24,6 +23,7 @@ function LocationMarker(props) {
       setPosition(e.latlng);
     },
   });
+  console.log(map)
 
   return position === null ? null : (
     <Marker position={position} icon={DefaultIcon}>

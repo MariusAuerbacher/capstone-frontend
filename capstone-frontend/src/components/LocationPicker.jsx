@@ -9,10 +9,10 @@ import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import LocationMarker from "./LocationMarker";
 
 
-let DefaultIcon = new Icon({
+/*let DefaultIcon = new Icon({
   iconUrl: icon,
   shadowUrl: iconShadow,
-});
+});*/
 
 //L.Marker.prototype.options.icon = DefaultIcon;
 
@@ -29,8 +29,8 @@ const LocationPicker  = (props) => {
           <Col xs={12} md={12}>
             <div id="map">
               <MapContainer
-                center={[13.38, 52.51]}
-                zoom={12}
+                center={[52.51, 13.38]}
+                zoom={50}
                 scrollWheelZoom={false}
               >
                 <TileLayer

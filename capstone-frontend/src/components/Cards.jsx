@@ -80,28 +80,31 @@ const Cards = () => {
   };
   const getAllBeneficiaries = async () => {
     const res = await axios.get("/beneficiaries/");
-    console.log(res.data);
     setBeneficiaries(res.data);
     setFilteredBeneficiaries(res.data)
+    console.log(beneficiaries)
+    console.log(filteredBeneficiaries)
   };
   const searchHandler = (e) => {
     e.preventDefault()
+   // eslint-disable-next-line array-callback-return
    const result =  countries.filter((country)=>{
       if(country.name.toLowerCase().includes(searchText)) return true
     })
     setFilteredCountries(result)
   }
 
-  const getUrgentBeneficiaries = (e) => {
+  /*const getUrgentBeneficiaries = (e) => {
     const result =  filteredBeneficiaries.filter((beneficiary)=>{
       if(beneficiary.category.toLowerCase().includes("urgent")) return true
     })
     setFilteredBeneficiaries(result)
-  }
+  }*/
 
   useEffect(() => {
     getAllBeneficiaries();
     //getAllInstitutions()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 

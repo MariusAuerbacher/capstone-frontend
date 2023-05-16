@@ -22,6 +22,7 @@ const Beneficiaries = () => {
 
   const searchHandler = (e) => {
     e.preventDefault()
+   // eslint-disable-next-line array-callback-return
    const result =  beneficiaries.filter((beneficiary)=>{
       if(beneficiary.category.toLowerCase().includes(searchText.toLowerCase())) return true
     })
@@ -29,6 +30,7 @@ const Beneficiaries = () => {
   }
 
   const getUrgentBeneficiaries = (e) => {
+    // eslint-disable-next-line array-callback-return
     const result =  beneficiaries.filter((beneficiary)=>{
       if(beneficiary.category.toLowerCase().includes("urgent")) return true
     })

@@ -1,9 +1,11 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Button, Col, Container, Form, Modal} from "react-bootstrap";
 //import { useDispatch } from "react-redux";
 import "../css/EditBeneficiaries.css";
 import LocationPicker from "../components/LocationPicker";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const paymentOptionsArray = [
   "Visa/Credit Card",
@@ -15,6 +17,8 @@ const paymentOptionsArray = [
 ];
 
 const AddBeneficiary = () => {
+  const navigate = useNavigate()
+  const role = useSelector((state)=>state.userReducer.role)
   const [file, setFile] = useState(null)
   const [beneficiary, setBeneficiary] = useState({
     name: "",
@@ -56,7 +60,12 @@ const AddBeneficiary = () => {
   };
 
 
-
+  useEffect(()=>{
+    if(role !== "INSTITUTION"){
+      navigate("/ilogin", {replace: true})
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [role])
   /*const addImageHandler = (e) => {
     e.preventDefault();
     setImage(e.target.files[0]);
@@ -178,7 +187,7 @@ const AddBeneficiary = () => {
                         type="checkbox"
                         label={option}
                         onChange={(e) => {
-                          const paymentOptions = [...beneficiary.paymentOptions]
+                          let paymentOptions = [...beneficiary.paymentOptions]
                           if(e.target.checked === true) {
                             paymentOptions.push(option)
                           } else {
@@ -201,6 +210,7 @@ const AddBeneficiary = () => {
                     className="mb-4"
                     //value={beneficiary.image}
                     type="file"
+                    hidden
                     //placeholder="Image of Beneficiary"
                     onChange={(e) =>{
                       setFile(e.target.files[0])

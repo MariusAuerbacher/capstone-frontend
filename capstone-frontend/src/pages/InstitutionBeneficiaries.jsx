@@ -3,9 +3,11 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import {useNavigate } from "react-router-dom";
 import "../css/Cards.css"
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 
 const InstitutionBeneficiaries = () => {
+  const role = useSelector((state)=>state.userReducer.role)
   const [beneficiaries, setBeneficiaries] = useState([]);
   const [filteredBeneficiaries, setFilteredBeneficiaries] = useState([])
   const [searchText, setSearchText] =useState("")
@@ -49,6 +51,13 @@ const InstitutionBeneficiaries = () => {
     getAllBeneficiaries();
     //getAllInstitutions()
   }, []);
+
+  useEffect(()=>{
+    if(role !== "INSTITUTION"){
+      navigate("/ilogin", {replace: true})
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [role])
   return (
     <>
   <form className="d-flex justify-content-end cards-form mt-5">

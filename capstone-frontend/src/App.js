@@ -8,7 +8,7 @@ import Cards from "./components/Cards";
 import Messaging from "./components/Messaging";
 import Footer from "./components/Footer";
 import Country from "./pages/Country";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { SET_ROLE, SET_USER } from "./redux/actions";
@@ -29,6 +29,7 @@ import PageUnderConstruction from "./pages/PageUnderConstruction";
 
 
 function App() {
+  const [profileLoading, setProfileLoading] = useState(true)
   const dispatch = useDispatch();
     const location = useLocation()
   const getProfile = async () => {
@@ -49,6 +50,7 @@ function App() {
     } catch (error) {
       console.log(error.response.data.message);
     }
+    setProfileLoading(false);
   };
   useEffect(() => {
     getProfile();
@@ -80,6 +82,11 @@ function App() {
     getIProfile();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);*/
+
+  if(profileLoading){
+    return <div>Loading...</div>
+  }
+
   return (
     <>
       <Topbar />

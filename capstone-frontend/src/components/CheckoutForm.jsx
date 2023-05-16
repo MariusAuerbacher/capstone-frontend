@@ -4,11 +4,15 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import "../css/CheckoutForm.css"
 
 
+
 const CheckoutForm = ({price}) => {
+
   const stripe = useStripe();
   const elements = useElements();
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
+
+  
   const handleSubmit = async (event) => {
 
     event.preventDefault();

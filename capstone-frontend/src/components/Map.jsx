@@ -4,7 +4,7 @@ import "../css/Map.css";
 import { Col, Container, Row } from "react-bootstrap";
 import axios from "axios";
 import icon from "leaflet/dist/images/marker-icon.png";
-import L, { Icon } from "leaflet";
+import  { Icon } from "leaflet";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 
 let DefaultIcon = new Icon({

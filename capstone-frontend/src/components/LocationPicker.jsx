@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import React from "react";
+import { MapContainer, TileLayer } from "react-leaflet";
 import "../css/Map.css";
 import { Col, Container, Row } from "react-bootstrap";
-import axios from "axios";
+
 import icon from "leaflet/dist/images/marker-icon.png";
-import L, { Icon } from "leaflet";
+import  { Icon } from "leaflet";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import LocationMarker from "./LocationMarker";
+
 
 let DefaultIcon = new Icon({
   iconUrl: icon,
@@ -17,6 +18,7 @@ let DefaultIcon = new Icon({
 
 
 const LocationPicker  = (props) => {
+ 
   return (
     <>
       <Container

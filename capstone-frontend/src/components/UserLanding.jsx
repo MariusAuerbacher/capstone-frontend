@@ -1,13 +1,21 @@
 
 import Messaging from "./Messaging";
 import Sidebar from "./Sidebar";
-import { Col, Row } from "react-bootstrap";
 import "../css/UserLanding.css"
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 
 const Profile = () => {
-  
-
+  const role = useSelector((state)=>state.userReducer.role)
+  const navigate = useNavigate()
+  useEffect(()=>{
+    if(role !== "DONATOR"){
+      navigate("/login", {replace: true})
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [role])
 
   return (
     <>

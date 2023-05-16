@@ -5,7 +5,8 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "../components/CheckoutForm";
 import "../css/Payment.css"
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 
 const stripePromise = loadStripe(
@@ -13,8 +14,10 @@ const stripePromise = loadStripe(
 );
 
 const Payment = () => {
+  const navigate = useNavigate()
+  const role = useSelector((state)=>state.userReducer.role)
   const [price, setPrice] = useState("");
-  const [funds, setFunds] = useState("")
+  //const [funds, setFunds] = useState("")
   const [clientSecret, setClientSecret] = useState(null);
   const [searchParams] = useSearchParams()
   const getClientSecret = async (e) => {
@@ -26,7 +29,15 @@ const Payment = () => {
 useEffect(()=>{
   const amount = searchParams.get("amount")
   setPrice(amount)
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [searchParams.get("amount")])
+
+useEffect(()=>{
+  if(role !== "DONATOR"){
+    navigate("/login", {replace: true})
+  }
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [role])
   return (
     <>
     <Container id="#login" className="d-flex justify-content-center my-5 login-container">

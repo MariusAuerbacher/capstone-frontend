@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Modal} from "react-bootstrap";
 //import { useDispatch } from "react-redux";
 import "../css/EditBeneficiaries.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import LocationPicker from "../components/LocationPicker";
 
 
 const paymentOptionsArray = [
@@ -16,6 +18,7 @@ const paymentOptionsArray = [
 ];
 
 const EditBeneficiary = () => {
+  const role = useSelector((state)=>state.userReducer.role)
   const navigate = useNavigate()
   const [file, setFile] = useState(null)
   const [beneficiary, setBeneficiary] = useState({
@@ -28,6 +31,10 @@ const EditBeneficiary = () => {
     paymentOptions: [],
     image: "",
     password: "",
+    location: {
+      type: "Point",
+      coordinates: []
+    }
   });
   //const [image, setImage] = useState(null);
 
@@ -43,6 +50,7 @@ const EditBeneficiary = () => {
 
   useEffect(()=>{
     getBeneficiary()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const submitHandler = async (e) => {
@@ -71,6 +79,12 @@ const EditBeneficiary = () => {
     e.preventDefault();
     setImage(e.target.files[0]);
   };*/
+  useEffect(()=>{
+    if(role !== "INSTITUTION"){
+      navigate("/ilogin", {replace: true})
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [role])
 
   return (
     <>
@@ -198,7 +212,7 @@ const EditBeneficiary = () => {
                         type="checkbox"
                         label={option}
                         onChange={(e) => {
-                          const paymentOptions = [...beneficiary.paymentOptions]
+                          let paymentOptions = [...beneficiary.paymentOptions]
                           if(e.target.checked === true) {
                             paymentOptions.push(option)
                           } else {
@@ -221,6 +235,7 @@ const EditBeneficiary = () => {
                     className="mb-4"
                     //value={beneficiary.image}
                     type="file"
+                    hidden
                     //placeholder="Image of Beneficiary"
                     onChange={(e) =>{
                       setFile(e.target.files[0])
@@ -237,6 +252,10 @@ const EditBeneficiary = () => {
                     Edit picture
                   </label>
                 </Form.Group>
+
+                <LocationPicker beneficiary={beneficiary} setBeneficiary={setBeneficiary}/>
+
+
                   <Form.Group className="mb-5" controlId="password">
                     <Form.Label>Password</Form.Label>
                     <Form.Control

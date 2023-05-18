@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col} from "react-bootstrap";
 import "../css/Vision.css"
 
 const Vision = () => {
@@ -21,7 +21,7 @@ const Vision = () => {
         </Row>
       </Container>
      
-   
+  
     </>
   );
 };

@@ -9,8 +9,16 @@
   height: 5rem;
   border: none;
   border-radius:7%;
+margin-inline: auto;
+margin-top: 35rem;
 }
 
+.slides-last{
+  margin-top: 35rem;
+}
+.carousel-button-end{
+  margin-inline-end: auto;
+}
 .carousel-text{
   color: #124a9e;
 }
@@ -23,6 +31,15 @@
   font-size: 10rem;
 
 }
-.carousel-interval{
-  interval: 40000,
+
+.slides-large-text{
+  font-size: 8rem;
 }
+
+.slides-large-text-top{
+  line-height: normal;
+  font-size: 8rem;
+  margin-bottom: 3.8rem;
+  color: white
+}
+

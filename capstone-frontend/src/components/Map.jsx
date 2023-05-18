@@ -30,14 +30,14 @@ const Map = () => {
     <>
       <Container
         id="#login"
-        className="d-flex justify-content-center login-container"
+        className="d-flex justify-content-center mb-5 map-container"
       >
         <Row>
           <Col xs={12} md={12}>
             <div id="map">
               <MapContainer
-                center={[ 52.51, 13.38]}
-                zoom={2}
+                 center={[20.85, 31.38]}
+                 zoom={2}
                 scrollWheelZoom={false}
               >
                 <TileLayer
@@ -63,10 +63,12 @@ const Map = () => {
                 })}
               </MapContainer>
             </div>
+          
           </Col>
+       
         </Row>
       </Container>
-      <hr />
+
     </>
   );
 };

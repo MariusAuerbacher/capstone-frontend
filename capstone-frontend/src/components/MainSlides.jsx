@@ -21,6 +21,7 @@ const MainSlides = () => {
           />
 
           <Carousel.Caption>
+          
             <button className="carousel-button mt-5" onClick={onDonateHandler}>
               Donate Now
             </button>

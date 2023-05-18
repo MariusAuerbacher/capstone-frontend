@@ -75,8 +75,7 @@ const Cards = () => {
   const [searchText, setSearchText] =useState("")
   const navigate = useNavigate();
   const onRohingyaHandler = () => {
-    navigate("/beneficiaries");
-    
+      navigate("/beneficiaries");
   };
   const getAllBeneficiaries = async () => {
     const res = await axios.get("/beneficiaries/");

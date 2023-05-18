@@ -3,9 +3,9 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import "../css/Map.css";
 import { Col, Container, Row } from "react-bootstrap";
 
-import icon from "leaflet/dist/images/marker-icon.png";
-import  { Icon } from "leaflet";
-import iconShadow from "leaflet/dist/images/marker-shadow.png";
+//import icon from "leaflet/dist/images/marker-icon.png";
+//import  { Icon } from "leaflet";
+//import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import LocationMarker from "./LocationMarker";
 
 
@@ -29,8 +29,8 @@ const LocationPicker  = (props) => {
           <Col xs={12} md={12}>
             <div id="map">
               <MapContainer
-                center={[52.51, 13.38]}
-                zoom={50}
+                center={[20.85, 31.38]}
+                zoom={2}
                 scrollWheelZoom={false}
               >
                 <TileLayer

@@ -14,7 +14,9 @@ const PageUnderConstruction = () => {
         <Row>
           <Col xs={12} md={12}>
             <h2 className="mb-4">This Page is still under construction</h2>
-            <p className="mb-4">We apologize, the page you have tried to access is still under construction, <br/> we hope that this issue will be fixed soon.<br/> Thank you for your patience</p>
+            <p className="mb-4">We apologize, the page you have tried to access is still under construction, <br/> we hope that this issue will be fixed soon.<br/></p>
+
+            <h5>We thank you for your patience.</h5>
            
 
 

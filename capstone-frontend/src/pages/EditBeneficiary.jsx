@@ -189,7 +189,7 @@ const EditBeneficiary = () => {
                     />
                   </Form.Group>
 
-                  <Form.Group className="mb-4" controlId="location">
+                  <Form.Group className="mb-5" controlId="location">
                     <Form.Label>Address</Form.Label>
                     <Form.Control
                       value={beneficiary.address}
@@ -229,10 +229,10 @@ const EditBeneficiary = () => {
                 </Form.Group>
 
                 <Form.Group controlId="image">
-                  <Form.Label>Image</Form.Label>
+                  <Form.Label className="image-label mb-5">Image</Form.Label>
                   <Form.Control
                     id="image"
-                    className="mb-4"
+                    className="mb-4 mx-5"
                     //value={beneficiary.image}
                     type="file"
                     hidden
@@ -243,14 +243,16 @@ const EditBeneficiary = () => {
                       
                     }
                   />
+                 
                   <label
-                    className="btn btn-primary btn-block btn-xl login-button mb-4"
+                    className="btn btn-primary btn-block btn-xl login-button mb-4 ml-5"
                     variant="primary"
                     type="button"
                    htmlFor="image"
                   >
                     Edit picture
                   </label>
+              
                 </Form.Group>
 
                 <LocationPicker beneficiary={beneficiary} setBeneficiary={setBeneficiary}/>

@@ -23,7 +23,7 @@ const LocationPicker  = (props) => {
     <>
       <Container
         id="#login"
-        className="d-flex justify-content-center login-container"
+        className="d-flex justify-content-center map-container"
       >
         <Row>
           <Col xs={12} md={12}>

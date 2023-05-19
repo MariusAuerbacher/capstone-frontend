@@ -161,7 +161,7 @@ const AddBeneficiary = () => {
                   />
                 </Form.Group>
 
-                <Form.Group className="mb-4" controlId="location">
+                <Form.Group className="mb-5" controlId="location">
                   <Form.Label>Address</Form.Label>
                   <Form.Control
                     value={beneficiary.address}
@@ -176,7 +176,7 @@ const AddBeneficiary = () => {
                   />
                 </Form.Group>
 
-                <Form.Label className="mb-3">
+                <Form.Label className="mb-5">
                   Ways of Receiving Funds
                 </Form.Label>
                 <Form.Group controlId="formBasicCheckbox mb-3">
@@ -204,7 +204,7 @@ const AddBeneficiary = () => {
                 </Form.Group>
 
                 <Form.Group controlId="image">
-                  <Form.Label>Image</Form.Label>
+                  <Form.Label className="image-label mb-5">Image</Form.Label>
                   <Form.Control
                     id="image"
                     className="mb-4"

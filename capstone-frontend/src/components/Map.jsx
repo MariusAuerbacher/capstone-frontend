@@ -56,7 +56,7 @@ const Map = () => {
                         beneficiary.location.coordinates[0],
                       ]}
                     >
-                      <Popup>{beneficiary.name} </Popup>
+                      <Popup>{beneficiary.name + ", " + beneficiary.category} </Popup>
                   
                     </Marker>
                   ) : null;

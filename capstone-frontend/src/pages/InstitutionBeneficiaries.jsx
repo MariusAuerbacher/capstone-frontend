@@ -99,7 +99,7 @@ const InstitutionBeneficiaries = () => {
                       <p><span className="text-muted">Location: </span>{beneficiary.address}</p>
                     </Card.Text>
                     <Card.Text>
-                      <p>{beneficiary.paymentOptions}</p>
+                      <p>{beneficiary.paymentOptions.join(", ")}</p>
                     </Card.Text>
 
                     {/*{institutions.map((institution) => {

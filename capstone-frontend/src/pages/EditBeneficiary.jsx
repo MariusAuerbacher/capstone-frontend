@@ -28,6 +28,7 @@ const EditBeneficiary = () => {
     description: "",
     number: "",
     address: "",
+    country: "",
     paymentOptions: [],
     image: "",
     password: "",
@@ -55,14 +56,21 @@ const EditBeneficiary = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const form = new FormData();
-    form.append("file", file)
-    form.append("upload_preset", "ummati")
-    const cloudinaryRes = await axios.post("https://api.cloudinary.com/v1_1/dj7y6okm8/upload", form)
-    console.log(cloudinaryRes.data)
+    if(file){
+      const form = new FormData();
+      form.append("file", file)
+      form.append("upload_preset", "ummati")
+      var cloudinaryRes = await axios.post("https://api.cloudinary.com/v1_1/dj7y6okm8/upload", form)
+      console.log(cloudinaryRes.data)
+    }
     const beneficiaryCopy = { ...beneficiary };
     beneficiaryCopy.number = +beneficiaryCopy.number;
-    beneficiaryCopy.image = cloudinaryRes.data.secure_url
+    if(file){
+      beneficiaryCopy.image = cloudinaryRes.data.secure_url
+
+    } else {
+      delete beneficiaryCopy.image;
+    }
     //beneficiaryCopy.paymentOptions = beneficiaryCopy.paymentOptions.split(",");
     console.log(beneficiaryCopy);
    const res = await axios.put(`/beneficiaries/${searchParams.get("beneficiary")}`, beneficiaryCopy, {
@@ -199,6 +207,20 @@ const EditBeneficiary = () => {
                         setBeneficiary({
                           ...beneficiary,
                           address: e.target.value,
+                        })
+                      }
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-5" controlId="location">
+                    <Form.Label>Country</Form.Label>
+                    <Form.Control
+                      value={beneficiary.country}
+                      type="text"
+                      placeholder="Country"
+                      onChange={(e) =>
+                        setBeneficiary({
+                          ...beneficiary,
+                          country: e.target.value,
                         })
                       }
                     />

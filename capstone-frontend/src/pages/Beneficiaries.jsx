@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import "../css/Beneficiaries.css";
 import axios from "axios";
 
@@ -8,6 +8,7 @@ const Beneficiaries = () => {
   const [beneficiaries, setBeneficiaries] = useState([]);
   const [filteredBeneficiaries, setFilteredBeneficiaries] = useState([])
   const [searchText, setSearchText] =useState("")
+  const [searchParams] = useSearchParams()
   //const [institutions, setInstitutions] = useState([]);
   const navigate = useNavigate();
   /*const onRohingyaHandler = () => {
@@ -16,8 +17,13 @@ const Beneficiaries = () => {
   const getAllBeneficiaries = async () => {
     const res = await axios.get("/beneficiaries/");
     console.log(res.data);
-    setBeneficiaries(res.data);
-    setFilteredBeneficiaries(res.data)
+    let data = res.data
+    if(searchParams.get("country")){
+
+      data = res.data.filter((beneficiary)=>beneficiary.country === searchParams.get("country"))
+    } 
+    setBeneficiaries(data);
+    setFilteredBeneficiaries(data)
   };
 
   const searchHandler = (e) => {
@@ -84,6 +90,9 @@ const Beneficiaries = () => {
                     </Card.Text>
                     <Card.Text>
                       <p><span className="text-muted">Email: </span> {beneficiary.email}</p>
+                    </Card.Text>
+                    <Card.Text>
+                      <p><span className="text-muted">Country: </span> {beneficiary.country}</p>
                     </Card.Text>
                     <Card.Text>
                       <p><span className="text-muted">Phone Number: </span>{beneficiary.number}</p>

@@ -38,7 +38,7 @@ const Login = () => {
       if(searchParams.get("redirect")){
         navigate(searchParams.get("redirect"))
       } else{
-        navigate("/user-logged-in")
+        navigate("/cards")
 
       }
     } catch (error) {

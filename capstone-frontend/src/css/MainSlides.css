@@ -1,5 +1,5 @@
 .carousel-images{
-  height: 52rem;
+  height: 40rem;
   width: 100%
 }
 .carousel-button{
@@ -39,7 +39,7 @@ margin-top: 35rem;
 .slides-large-text-top{
   line-height: normal;
   font-size: 8rem;
-  margin-bottom: 3.8rem;
-  color: white
+  color: white;
+  margin-top: 2rem
 }
 

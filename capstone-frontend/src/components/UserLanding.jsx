@@ -1,5 +1,5 @@
 
-import Messaging from "./Messaging";
+/*import Messaging from "./Messaging";
 import Sidebar from "./Sidebar";
 import "../css/UserLanding.css"
 import { useEffect } from "react";
@@ -28,7 +28,7 @@ const Profile = () => {
           </Col>
         </Row>
         <Messaging/>
-  </Container>*/}
+  </Container>}
 
 
       <div className="sidebar-container">
@@ -41,4 +41,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Profile;*/

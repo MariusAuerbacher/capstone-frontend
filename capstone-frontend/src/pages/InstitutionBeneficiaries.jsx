@@ -17,7 +17,11 @@ const InstitutionBeneficiaries = () => {
     navigate("/country/rohingya");
   };*/
   const getAllBeneficiaries = async () => {
-    const res = await axios.get("/beneficiaries/");
+    const res = await axios.get("/beneficiaries/institution", {
+      headers: { 
+        Authorization: "Bearer " + localStorage.getItem("token")}
+        
+    });
     console.log(res.data);
     setBeneficiaries(res.data);
     setFilteredBeneficiaries(res.data)

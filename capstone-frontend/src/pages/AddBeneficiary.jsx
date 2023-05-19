@@ -27,6 +27,7 @@ const AddBeneficiary = () => {
     description: "",
     number: "",
     address: "",
+    country: "",
     paymentOptions: [],
     image: "",
     password: "",
@@ -171,6 +172,21 @@ const AddBeneficiary = () => {
                       setBeneficiary({
                         ...beneficiary,
                         address: e.target.value,
+                      })
+                    }
+                  />
+                </Form.Group>
+
+                <Form.Group className="mb-5" controlId="location">
+                  <Form.Label>Country</Form.Label>
+                  <Form.Control
+                    value={beneficiary.country}
+                    type="text"
+                    placeholder="Country"
+                    onChange={(e) =>
+                      setBeneficiary({
+                        ...beneficiary,
+                        country: e.target.value,
                       })
                     }
                   />

@@ -16,7 +16,7 @@ const MainSlides = () => {
         <Carousel.Item>
           <img
             className="carousel-images"
-            src="https://images.unsplash.com/photo-1521493959102-bdd6677fdd81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTQ2fHxjaGFyaXR5fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+            src="https://oneummah.org.uk/wp-content/uploads/2020/03/DSC08264-scaled.jpg"
             alt="First slide"
           />
 
@@ -27,7 +27,7 @@ const MainSlides = () => {
             <div className="slides-first">
               <p className="slides-large-text-top text-start slides-first">DIRECT</p>
           <p className="slides-large-text-top text-start slides-first">EFFICIENT</p>
-          <p className="slides-large-text-top text-start slides-first">AID</p>
+          <p className="slides-large-text-top text-start slides-first">PERSONAL</p>
           </div> 
             
            
@@ -51,7 +51,7 @@ const MainSlides = () => {
 <div>
               <p className="slides-large-text-top text-start">DIRECT</p>
           <p className="slides-large-text-top text-start">EFFICIENT</p>
-          <p className="slides-large-text-top text-start">AID</p>
+          <p className="slides-large-text-top text-start">PERSONAL</p>
           </div> 
             
            
@@ -74,7 +74,7 @@ const MainSlides = () => {
 <div>
               <p className="slides-large-text-top text-start">DIRECT</p>
           <p className="slides-large-text-top text-start">EFFICIENT</p>
-          <p className="slides-large-text-top text-start">AID</p>
+          <p className="slides-large-text-top text-start">PERSONAL</p>
           </div> 
             
            
@@ -88,7 +88,8 @@ const MainSlides = () => {
         <Carousel.Item>
           <img
             className="carousel-images img-fluid"
-            src="https://oneummah.org.uk/wp-content/uploads/2020/03/DSC08264-scaled.jpg"
+            src="https://images.unsplash.com/photo-1521493959102-bdd6677fdd81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTQ2fHxjaGFyaXR5fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+            
             alt="Third slide"
           />
 
@@ -98,7 +99,7 @@ const MainSlides = () => {
 <div>
               <p className="slides-large-text-top text-start">DIRECT</p>
           <p className="slides-large-text-top text-start">EFFICIENT</p>
-          <p className="slides-large-text-top text-start">AID</p>
+          <p className="slides-large-text-top text-start">PERSONAL</p>
           </div> 
             
    

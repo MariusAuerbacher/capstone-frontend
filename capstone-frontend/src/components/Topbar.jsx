@@ -32,11 +32,11 @@ const Topbar = () => {
     const res = await axios.get("/beneficiaries/");
     // eslint-disable-next-line array-callback-return
     const result = res.data.filter((beneficiary) => {
-      if (beneficiary.category.toLowerCase().includes(category.toLowerCase()))
+      if (category.toLowerCase().includes(beneficiary.category.toLowerCase()))
         return true;
     });
     const beneficiary = result[Math.floor(Math.random() * result.length)];
-    console.log(beneficiary);
+    console.log(res.data ,result);
 
     if (role !== "DONATOR") {
       navigate(
@@ -95,12 +95,12 @@ const Topbar = () => {
                 Business Partnership
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link
-              href="/beneficiaries"
-              className="topbar-text text-decoration-none"
+            <Link
+              to="/beneficiaries"
+              className="topbar-text text-decoration-none links-topbar mt-2 mx-2"
             >
               Appeals
-            </Nav.Link>
+            </Link>
             <Nav.Link href="#cards" className="topbar-text">
               Get Involved
             </Nav.Link>
@@ -110,6 +110,12 @@ const Topbar = () => {
             <Nav.Link href="#footer" className="topbar-text">
               Contact
             </Nav.Link>
+            {role === "INSTITUTION" &&
+            <Link to="/institutionbeneficiaries" className="topbar-text text-decoration-none mt-2 mx-2">
+              My Beneficiaries
+            </Link>
+            
+         }
           </Nav>
 
           <div>

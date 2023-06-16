@@ -109,6 +109,8 @@ const MainSlides = () => {
        
           </Carousel.Caption>
         </Carousel.Item>
+
+
       </Carousel>
       <Vision />
       <Map/>
@@ -117,3 +119,4 @@ const MainSlides = () => {
 };
 
 export default MainSlides;
+

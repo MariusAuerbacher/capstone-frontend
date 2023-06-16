@@ -48,7 +48,7 @@ function App() {
         payload: res.data.role,
       });
     } catch (error) {
-      console.log(error.response.data.message);
+      console.log(error.response);
     }
     setProfileLoading(false);
   };

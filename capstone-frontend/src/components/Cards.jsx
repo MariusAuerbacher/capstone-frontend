@@ -117,6 +117,10 @@ const Cards = () => {
     setFilteredCountries(result);
   };
 
+  const getAllBeneficiariesHandler = () => {
+    
+  }
+
   /*const getUrgentBeneficiaries = (e) => {
     const result =  filteredBeneficiaries.filter((beneficiary)=>{
       if(beneficiary.category.toLowerCase().includes("urgent")) return true
@@ -134,7 +138,7 @@ const Cards = () => {
     <>
       <form
         id="cards"
-        className="d-flex justify-content-end cards-form my-5"
+        className="d-flex justify-content-end cards-form mt-5"
         onSubmit={searchHandler}
       >
         <input
@@ -149,6 +153,10 @@ const Cards = () => {
         <input type="submit" value="Search" className="card-search-button" />
       </form>
 
+      <div className="d-flex justify-content-end button-urgent-appeals  mt-2 mb-3 cards-form">
+<Button className="get-all-button" style={{ width: '16.4rem' }} onClick={getAllBeneficiariesHandler}>Show all</Button>
+
+</div>
       <Container className="container-fluid">
         <Row>
           {filteredCountries.map((country) => {

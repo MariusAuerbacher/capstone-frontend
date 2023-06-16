@@ -23,7 +23,6 @@ function LocationMarker(props) {
       setPosition(e.latlng);
     },
   });
-  console.log(map)
 
   return position === null ? null : (
     <Marker position={position} icon={DefaultIcon}>

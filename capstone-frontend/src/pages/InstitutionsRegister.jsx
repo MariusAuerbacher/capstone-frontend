@@ -43,9 +43,7 @@ const InstitutionsRegister = () => {
         payload: res.data.role,
       });
       navigate("/ilogin");
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
   return (
     <>

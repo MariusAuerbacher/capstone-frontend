@@ -1,19 +1,16 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
-import {useDispatch} from "react-redux"
+import { useDispatch } from "react-redux";
 import { SET_ROLE, SET_USER } from "../redux/actions";
 import { Link, useNavigate } from "react-router-dom";
-
-
-
 
 const InstitutionsLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const InstitutionLoginHandler = async (e) => {
     e.preventDefault();
@@ -22,28 +19,29 @@ const InstitutionsLogin = () => {
         email,
         password,
       });
-      localStorage.setItem("token", res.data.token)
+      localStorage.setItem("token", res.data.token);
       dispatch({
         type: SET_USER,
-        payload: res.data.institution
-      })
+        payload: res.data.institution,
+      });
       dispatch({
         type: SET_ROLE,
-        payload: res.data.role
-      })
-      navigate("/institutionbeneficiaries")
-    } catch (error) {
-      console.log(error.response.data.message);
-    }
+        payload: res.data.role,
+      });
+      navigate("/institutionbeneficiaries");
+    } catch (error) {}
   };
   return (
     <>
-        <Container id="#login" className="d-flex justify-content-center my-4 login-container">
+      <Container
+        id="#login"
+        className="d-flex justify-content-center my-4 login-container"
+      >
         <Row>
           <Col xs={12} md={12}>
             <h2 className="mb-4">Sign in as an Institution</h2>
             <p className="mb-4">Enter your registered details below</p>
-            <Form onSubmit={InstitutionLoginHandler }>
+            <Form onSubmit={InstitutionLoginHandler}>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
@@ -70,17 +68,15 @@ const InstitutionsLogin = () => {
                 />
               </Form.Group>
               <label className="d-flex mb-3">
-              <input
-                name="terms"
-                type="checkbox"
-                value="value"
-                id="terms"
-                className="tml-checkbox mx-2"
-                aria-label="Text input with checkbox"
-              >
-              </input>
-
-             Remember me
+                <input
+                  name="terms"
+                  type="checkbox"
+                  value="value"
+                  id="terms"
+                  className="tml-checkbox mx-2"
+                  aria-label="Text input with checkbox"
+                ></input>
+                Remember me
               </label>
               <button
                 name="submit"
@@ -89,25 +85,35 @@ const InstitutionsLogin = () => {
               >
                 Login
               </button>
-             
             </Form>
 
-
             <div className="tml-links mb-5">
-              
-              <Link className="text-decoration-none login-link d-block mb-2" to="/login">Register</Link>
-              <Link className="text-decoration-none login-link d-block mb-2" to="/login">Login as a User</Link>
-              <Link className="text-decoration-none login-link d-block mb-2" to="/login">Forgot your password?</Link>
-         
-          </div>
+              <Link
+                className="text-decoration-none login-link d-block mb-2"
+                to="/login"
+              >
+                Register
+              </Link>
+              <Link
+                className="text-decoration-none login-link d-block mb-2"
+                to="/login"
+              >
+                Login as a User
+              </Link>
+              <Link
+                className="text-decoration-none login-link d-block mb-2"
+                to="/login"
+              >
+                Forgot your password?
+              </Link>
+            </div>
           </Col>
         </Row>
-      
       </Container>
-    
-      <hr/>
+
+      <hr />
     </>
   );
 };
 
-export default InstitutionsLogin ;
+export default InstitutionsLogin;

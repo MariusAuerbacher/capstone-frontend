@@ -23,7 +23,6 @@ const Payment = () => {
   const getClientSecret = async (e) => {
     e.preventDefault();
     const res = await axios.post("/payments/payment-intent", { price: +price });
-    console.log(res.data);
     setClientSecret(res.data.clientSecret);
   };
 useEffect(()=>{
@@ -70,7 +69,7 @@ useEffect(()=>{
                   label="Yes, donate 1$ to run this website"
                   onChange={(e) => {
 
-                    console.log(e.target.checked)
+                   
                     if(e.target.checked === true){
                       setPrice((Number(price) + 1).toString())
                     } else {

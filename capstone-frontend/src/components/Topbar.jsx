@@ -36,7 +36,6 @@ const Topbar = () => {
         return true;
     });
     const beneficiary = result[Math.floor(Math.random() * result.length)];
-    console.log(res.data ,result);
 
     if (role !== "DONATOR") {
       navigate(
@@ -110,12 +109,14 @@ const Topbar = () => {
             <Nav.Link href="#footer" className="topbar-text">
               Contact
             </Nav.Link>
-            {role === "INSTITUTION" &&
-            <Link to="/institutionbeneficiaries" className="topbar-text text-decoration-none mt-2 mx-2">
-              My Beneficiaries
-            </Link>
-            
-         }
+            {role === "INSTITUTION" && (
+              <Link
+                to="/institutionbeneficiaries"
+                className="topbar-text text-decoration-none mt-2 mx-2"
+              >
+                My Beneficiaries
+              </Link>
+            )}
           </Nav>
 
           <div>

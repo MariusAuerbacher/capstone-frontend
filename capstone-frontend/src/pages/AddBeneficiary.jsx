@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Col, Container, Form, Modal} from "react-bootstrap";
+import { Button, Col, Container, Form, Modal } from "react-bootstrap";
 //import { useDispatch } from "react-redux";
 import "../css/EditBeneficiaries.css";
 import LocationPicker from "../components/LocationPicker";
@@ -17,9 +17,9 @@ const paymentOptionsArray = [
 ];
 
 const AddBeneficiary = () => {
-  const navigate = useNavigate()
-  const role = useSelector((state)=>state.userReducer.role)
-  const [file, setFile] = useState(null)
+  const navigate = useNavigate();
+  const role = useSelector((state) => state.userReducer.role);
+  const [file, setFile] = useState(null);
   const [beneficiary, setBeneficiary] = useState({
     name: "",
     email: "",
@@ -33,8 +33,8 @@ const AddBeneficiary = () => {
     password: "",
     location: {
       type: "Point",
-      coordinates: []
-    }
+      coordinates: [],
+    },
   });
   //const [image, setImage] = useState(null);
 
@@ -43,30 +43,31 @@ const AddBeneficiary = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     const form = new FormData();
-    form.append("file", file)
-    form.append("upload_preset", "ummati")
-    const cloudinaryRes = await axios.post("https://api.cloudinary.com/v1_1/dj7y6okm8/upload", form)
-    console.log(cloudinaryRes.data)
+    form.append("file", file);
+    form.append("upload_preset", "ummati");
+    const cloudinaryRes = await axios.post(
+      "https://api.cloudinary.com/v1_1/dj7y6okm8/upload",
+      form
+    );
+
     const beneficiaryCopy = { ...beneficiary };
     beneficiaryCopy.number = +beneficiaryCopy.number;
-    beneficiaryCopy.image = cloudinaryRes.data.secure_url
+    beneficiaryCopy.image = cloudinaryRes.data.secure_url;
     //beneficiaryCopy.paymentOptions = beneficiaryCopy.paymentOptions.split(",");
-    console.log(beneficiaryCopy);
+
     const res = await axios.post("/beneficiaries/register", beneficiaryCopy, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
     });
-    console.log(res.data);
   };
 
-
-  useEffect(()=>{
-    if(role !== "INSTITUTION"){
-      navigate("/ilogin", {replace: true})
+  useEffect(() => {
+    if (role !== "INSTITUTION") {
+      navigate("/ilogin", { replace: true });
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [role])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [role]);
   /*const addImageHandler = (e) => {
     e.preventDefault();
     setImage(e.target.files[0]);
@@ -203,11 +204,13 @@ const AddBeneficiary = () => {
                         type="checkbox"
                         label={option}
                         onChange={(e) => {
-                          let paymentOptions = [...beneficiary.paymentOptions]
-                          if(e.target.checked === true) {
-                            paymentOptions.push(option)
+                          let paymentOptions = [...beneficiary.paymentOptions];
+                          if (e.target.checked === true) {
+                            paymentOptions.push(option);
                           } else {
-                            paymentOptions = paymentOptions.filter((op)=> op !== option)
+                            paymentOptions = paymentOptions.filter(
+                              (op) => op !== option
+                            );
                           }
                           setBeneficiary({
                             ...beneficiary,
@@ -228,24 +231,21 @@ const AddBeneficiary = () => {
                     type="file"
                     hidden
                     //placeholder="Image of Beneficiary"
-                    onChange={(e) =>{
-                      setFile(e.target.files[0])
-                    }
-                      
-                    }
+                    onChange={(e) => {
+                      setFile(e.target.files[0]);
+                    }}
                   />
                   <label
                     className="btn btn-primary btn-block btn-xl login-button mb-4"
                     variant="primary"
                     type="button"
-                   htmlFor="image"
+                    htmlFor="image"
                   >
                     Add picture
                   </label>
                 </Form.Group>
 
-
-                 {/*<Form.Group className="mb-4" controlId="email-name">
+                {/*<Form.Group className="mb-4" controlId="email-name">
                   <Form.Label>Latitude</Form.Label>
                   <Form.Control
                     value={beneficiary.location.coordinates[1]}
@@ -283,8 +283,10 @@ const AddBeneficiary = () => {
                   />
                   </Form.Group>*/}
 
-
-                  <LocationPicker beneficiary={beneficiary} setBeneficiary={setBeneficiary}/>
+                <LocationPicker
+                  beneficiary={beneficiary}
+                  setBeneficiary={setBeneficiary}
+                />
 
                 <Form.Group className="mb-5" controlId="password">
                   <Form.Label>Password</Form.Label>

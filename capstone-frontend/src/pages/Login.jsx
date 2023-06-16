@@ -1,22 +1,18 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import {useDispatch} from "react-redux"
+import { useDispatch } from "react-redux";
 import { SET_ROLE, SET_USER } from "../redux/actions";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import "../css/Login.css"
-
-
-
+import "../css/Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const [searchParams] = useSearchParams()
-  console.log(searchParams.get("redirect"))
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [searchParams] = useSearchParams();
 
   const loginHandler = async (e) => {
     e.preventDefault();
@@ -24,30 +20,30 @@ const Login = () => {
       const res = await axios.post("/users/login", {
         email,
         password,
-        rememberMe
+        rememberMe,
       });
-      localStorage.setItem("token", res.data.token)
+      localStorage.setItem("token", res.data.token);
       dispatch({
         type: SET_USER,
-        payload: res.data.user
-      })
+        payload: res.data.user,
+      });
       dispatch({
         type: SET_ROLE,
-        payload: res.data.role
-      })
-      if(searchParams.get("redirect")){
-        navigate(searchParams.get("redirect"))
-      } else{
-        navigate("/cards")
-
+        payload: res.data.role,
+      });
+      if (searchParams.get("redirect")) {
+        navigate(searchParams.get("redirect"));
+      } else {
+        navigate("/cards");
       }
-    } catch (error) {
-      console.log(error.response.data.message);
-    }
+    } catch (error) {}
   };
   return (
     <>
-      <Container id="#login" className="d-flex justify-content-center my-4 login-container">
+      <Container
+        id="#login"
+        className="d-flex justify-content-center my-4 login-container"
+      >
         <Row>
           <Col xs={12} md={12}>
             <h2 className="mb-4">Sign in as User</h2>
@@ -79,20 +75,18 @@ const Login = () => {
                 />
               </Form.Group>
               <label className="d-flex mb-3">
-              <input
-                name="terms"
-                type="checkbox"
-                value={rememberMe}
-                id="terms"
-                className="tml-checkbox mx-2"
-                aria-label="Text input with checkbox"
-                onChange={(e) => {
-                  setRememberMe(!rememberMe);
-                }}
-              >
-              </input>
-
-             Remember me
+                <input
+                  name="terms"
+                  type="checkbox"
+                  value={rememberMe}
+                  id="terms"
+                  className="tml-checkbox mx-2"
+                  aria-label="Text input with checkbox"
+                  onChange={(e) => {
+                    setRememberMe(!rememberMe);
+                  }}
+                ></input>
+                Remember me
               </label>
               <button
                 name="submit"
@@ -101,21 +95,35 @@ const Login = () => {
               >
                 Login
               </button>
-             
             </Form>
 
-
             <div className="tml-links mb-5">
-              
-              <Link className="text-decoration-none login-link d-block mb-2" to="/register">Register</Link>
-              <Link className="text-decoration-none login-link d-block mb-2" to="/ilogin">Login as an Institution</Link>
-              <Link className="text-decoration-none login-link d-block mb-2" to="/reset-password">Forgot your password?</Link>
-         
-          </div>
+              <Link
+                className="text-decoration-none login-link d-block mb-2"
+                to="/register"
+              >
+                Register
+              </Link>
+              <Link
+                className="text-decoration-none login-link d-block mb-2"
+                to="/ilogin"
+              >
+                Login as an Institution
+              </Link>
+              <Link
+                className="text-decoration-none login-link d-block mb-2"
+                to="/reset-password"
+              >
+                Forgot your password?
+              </Link>
+            </div>
 
-
-          <a href="http://localhost:3001/users/auth/google">
-              <Button className="mb-4 w-100" size="lg" style={{ backgroundColor: "#124a9e" }}>
+            <a href="http://localhost:3001/users/auth/google">
+              <Button
+                className="mb-4 w-100"
+                size="lg"
+                style={{ backgroundColor: "#124a9e" }}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -131,9 +139,8 @@ const Login = () => {
             </a>
           </Col>
         </Row>
-      
       </Container>
-      <hr/>
+      <hr />
     </>
   );
 };

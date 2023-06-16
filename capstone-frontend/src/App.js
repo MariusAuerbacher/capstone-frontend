@@ -27,11 +27,10 @@ import AddBeneficiary from "./pages/AddBeneficiary";
 //import Sidebar from "./components/Sidebar";
 import PageUnderConstruction from "./pages/PageUnderConstruction";
 
-
 function App() {
-  const [profileLoading, setProfileLoading] = useState(true)
+  const [profileLoading, setProfileLoading] = useState(true);
   const dispatch = useDispatch();
-    const location = useLocation()
+  const location = useLocation();
   const getProfile = async () => {
     try {
       const res = await axios.get("/profile", {
@@ -47,9 +46,7 @@ function App() {
         type: SET_ROLE,
         payload: res.data.role,
       });
-    } catch (error) {
-      console.log(error.response);
-    }
+    } catch (error) {}
     setProfileLoading(false);
   };
   useEffect(() => {
@@ -58,11 +55,11 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     window.scrollTo({
-      top: 0
-    })
-  }, [location.pathname])
+      top: 0,
+    });
+  }, [location.pathname]);
   /*const getIProfile = async () => {
     try {
       const res = await axios.get("/institutions/me", {
@@ -75,7 +72,7 @@ function App() {
         payload: res.data
       })
     } catch (error) {
-      console.log(error.response.data.message);
+       
     }
   };
   useEffect(() => {
@@ -83,16 +80,15 @@ function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);*/
 
-  if(profileLoading){
-    return <div>Loading...</div>
+  if (profileLoading) {
+    return <div>Loading...</div>;
   }
 
   return (
     <>
       <Topbar />
-     
-      <Routes>
 
+      <Routes>
         <Route path="/" element={<MainSlides />} />
         {/*<Route path="/test" element={ <UserLanding/>}/>
         <Route path="/test" element={<Messaging />}/>
@@ -114,10 +110,13 @@ function App() {
         <Route path="/payment" element={<Payment />} />
         <Route path="/payment-success" element={<PaymentSuccess />} />
 
-        <Route path="/page-under-construction" element={<PageUnderConstruction />} />
+        <Route
+          path="/page-under-construction"
+          element={<PageUnderConstruction />}
+        />
       </Routes>
       <Cards />
-   
+
       <Footer />
       {/*<Toaster/>*/}
     </>

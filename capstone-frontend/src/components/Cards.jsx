@@ -98,15 +98,12 @@ const Cards = () => {
   const [searchText, setSearchText] = useState("");
   const navigate = useNavigate();
   const onRohingyaHandler = (country) => {
-    console.log(country);
     navigate(`/beneficiaries?country=${country.name}`);
   };
   const getAllBeneficiaries = async () => {
     const res = await axios.get("/beneficiaries/");
     setBeneficiaries(res.data);
     setFilteredBeneficiaries(res.data);
-    console.log(beneficiaries);
-    console.log(filteredBeneficiaries);
   };
   const searchHandler = (e) => {
     e.preventDefault();
@@ -117,9 +114,7 @@ const Cards = () => {
     setFilteredCountries(result);
   };
 
-  const getAllBeneficiariesHandler = () => {
-    
-  }
+  const getAllBeneficiariesHandler = () => {};
 
   /*const getUrgentBeneficiaries = (e) => {
     const result =  filteredBeneficiaries.filter((beneficiary)=>{
@@ -154,9 +149,14 @@ const Cards = () => {
       </form>
 
       <div className="d-flex justify-content-end button-urgent-appeals  mt-2 mb-3 cards-form">
-<Button className="get-all-button" style={{ width: '16.4rem' }} onClick={getAllBeneficiariesHandler}>Show all</Button>
-
-</div>
+        <Button
+          className="get-all-button"
+          style={{ width: "16.4rem" }}
+          onClick={getAllBeneficiariesHandler}
+        >
+          Show all
+        </Button>
+      </div>
       <Container className="container-fluid">
         <Row>
           {filteredCountries.map((country) => {
